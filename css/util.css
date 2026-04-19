@@ -1,0 +1,15 @@
+/* RESET BÁSICO */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* VARIABLES (base para día 2) */
+
+:root {
+    --color-bg: #0b0f1a;
+    --color-accent: #4f46e5;
+    --radius: 10px;
+}

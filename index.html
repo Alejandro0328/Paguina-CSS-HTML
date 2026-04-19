@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel App</title>
+
+  <!-- ORDEN IMPORTANTE -->
+  <link rel="stylesheet" href="css/utils.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body class="app">
+  <main class="app__main">
+
+    <!-- Splash -->
+    <section id="splash" class="screen screen--splash screen--active">
+      <header class="screen__header">
+        <h1 class="screen__title">Travel App</h1>
+      </header>
+
+      <nav class="screen__nav">
+        <a href="#home" class="button button--primary">Comenzar</a>
+      </nav>
+    </section>
+
+    <!-- Home -->
+    <section id="home" class="screen screen--home">
+      <header class="screen__header">
+        <h1 class="screen__title">Inicio</h1>
+      </header>
+
+      <nav class="home__nav home__nav--primary">
+        <a href="#travel" class="button">Buscar Viajes</a>
+        <a href="#payments" class="button">Pagos</a>
+      </nav>
+
+      <nav class="home__nav home__nav--secondary">
+        <a href="#splash" class="button button--secondary">Atrás</a>
+      </nav>
+    </section>
+
+    <!-- Travel -->
+    <section id="travel" class="screen screen--travel">
+      <header class="screen__header">
+        <h1 class="screen__title">Buscar Viajes</h1>
+      </header>
+
+      <form class="travel__form">
+        <fieldset class="travel__fieldset">
+          <legend>Destino</legend>
+          <input class="travel__input" type="text" placeholder="¿A dónde viajas?">
+        </fieldset>
+
+        <fieldset class="travel__fieldset">
+          <legend>Fechas</legend>
+          <input class="travel__input" type="date">
+          <input class="travel__input" type="date">
+        </fieldset>
+
+        <a href="#payments" class="button button--primary">Continuar</a>
+      </form>
+
+      <nav class="travel__nav">
+        <a href="#home" class="button button--secondary">Atrás</a>
+      </nav>
+    </section>
+
+    <!-- Payments -->
+    <section id="payments" class="screen screen--payments">
+      <header class="screen__header">
+        <h1 class="screen__title">Pagos</h1>
+      </header>
+
+      <form class="payments__form">
+        <fieldset class="payments__fieldset">
+          <legend>Método de Pago</legend>
+
+          <label class="payments__option">
+            <input type="radio" name="payment">
+            Tarjeta de Crédito
+          </label>
+
+          <label class="payments__option">
+            <input type="radio" name="payment">
+            Transferencia Bancaria
+          </label>
+        </fieldset>
+
+        <fieldset class="payments__fieldset">
+          <legend>Datos de Tarjeta</legend>
+
+          <input class="payments__input" type="text" placeholder="Número de tarjeta">
+          <input class="payments__input" type="text" placeholder="Nombre del titular">
+          <input class="payments__input" type="text" placeholder="MM/YY">
+          <input class="payments__input" type="text" placeholder="CVV">
+        </fieldset>
+
+        <a href="#receipt" class="button button--primary">Pagar</a>
+      </form>
+
+      <nav class="payments__nav">
+        <a href="#travel" class="button button--secondary">Atrás</a>
+      </nav>
+    </section>
+
+    <!-- Receipt -->
+    <section id="receipt" class="screen screen--receipt">
+      <header class="screen__header">
+        <h1 class="screen__title">Confirmación</h1>
+      </header>
+
+      <article class="receipt">
+        <h2 class="receipt__title">¡Pago Realizado!</h2>
+        <p class="receipt__text">Tu viaje ha sido confirmado exitosamente.</p>
+
+        <dl class="receipt__details">
+          <dt>Número de Confirmación</dt>
+          <dd>TRV-2024-001</dd>
+
+          <dt>Monto Total</dt>
+          <dd>$850.00 USD</dd>
+
+          <dt>Fecha de Viaje</dt>
+          <dd>15 de Mayo, 2024</dd>
+        </dl>
+      </article>
+
+      <nav class="receipt__nav">
+        <a href="#home" class="button button--primary">Volver al Inicio</a>
+      </nav>
+    </section>
+
+  </main>
+</body>
+</html>
