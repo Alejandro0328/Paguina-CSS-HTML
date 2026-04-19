@@ -32,22 +32,78 @@
   </div>
 </section>
 
-    <!-- Home -->
-    <section id="home" class="screen screen--home">
-      <header class="screen__header">
-        <h1 class="screen__title">Inicio</h1>
-      </header>
+<section id="home" class="screen screen--home">
+  <header class="home__header">
+    <div class="home__user">
+      <img src="assets/img/avatar.jpg" alt="William Teig" class="home__avatar">
+      <h2 class="home__username">William Teig</h2>
+    </div>
+  </header>
 
-      <nav class="home__nav home__nav--primary">
-        <a href="#travel" class="button">Buscar Viajes</a>
-        <a href="#payments" class="button">Pagos</a>
-      </nav>
+  <div class="home__banner">
+    <div class="home__banner-content">
+      <h3 class="home__banner-title">Always Wear Your Helmet When Traveling In Space</h3>
+      <p class="home__banner-text">About Safe Space Flight ›</p>
+    </div>
+    <img src="assets/img/astronauta.jpeg" alt="" class="home__banner-img">
+  </div>
 
-      <nav class="home__nav home__nav--secondary">
-        <a href="#splash" class="button button--secondary">Atrás</a>
-      </nav>
-    </section>
+  <nav class="home__quick-nav">
+    <a href="#travel" class="home__nav-item">
+      <img src="assets/icons/travel.svg" alt="" class="home__nav-icon">
+      <span class="home__nav-label">Travel</span>
+    </a>
+    <a href="#explore" class="home__nav-item">
+      <img src="assets/icons/explore.svg" alt="" class="home__nav-icon">
+      <span class="home__nav-label">Explore</span>
+    </a>
+    <a href="#book" class="home__nav-item">
+      <img src="assets/icons/book.svg" alt="" class="home__nav-icon">
+      <span class="home__nav-label">Book</span>
+    </a>
+  </nav>
 
+  <div class="home__filter">
+    <div class="home__search-group">
+      <span class="home__filter-label">Where to...?</span>
+    </div>
+    <button class="home__filter-btn" type="button">
+      <span class="home__filter-icon">🕒</span>
+      Now
+      <span class="home__filter-chevron">⌄</span>
+    </button>
+  </div>
+
+  <div class="home__destinations">
+    <div class="home__destination-item">
+      <img src="assets/img/tierra.jpg" alt="" class="home__destination-img">
+      <div class="home__destination-content">
+        <h4 class="home__destination-title">Earth</h4>
+        <p class="home__destination-subtitle">Solar System, Planet 4</p>
+      </div>
+    </div>
+
+    <div class="home__destination-item">
+      <img src="assets/img/marte.jpeg" alt="" class="home__destination-img">
+      <div class="home__destination-content">
+        <h4 class="home__destination-title">Mars</h4>
+        <p class="home__destination-subtitle">Solar System, Planet 5</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="home__bottom-nav">
+    <a href="#home" class="home__bottom-nav-item home__bottom-nav-item--active">
+      <span class="home__bottom-nav-icon">⌂</span>
+      <span class="home__bottom-nav-label">Home</span>
+    </a>
+    <div class="home__bottom-nav-divider"></div>
+    <a href="#journeys" class="home__bottom-nav-item">
+      <span class="home__bottom-nav-icon">✈</span>
+      <span class="home__bottom-nav-label">Journeys</span>
+    </a>
+  </nav>
+</section>
     <!-- Travel -->
     <section id="travel" class="screen screen--travel">
       <header class="screen__header">
