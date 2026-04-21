@@ -1373,6 +1373,385 @@ input {
 
 
 /* ============================================================================
+   PAYMENT METHODS SCREEN  (BEM: .pm__)
+   ============================================================================ */
+
+.screen--payments {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+    background: #0b101e;
+    overflow: hidden;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+
+.pm__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 56px 20px 16px;
+    gap: 0;
+    flex-shrink: 0;
+    background: linear-gradient(to bottom,
+            rgba(11, 16, 30, 1) 60%,
+            rgba(11, 16, 30, 0));
+}
+
+.pm__back {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.pm__back:hover,
+.pm__back:focus-visible {
+    background: rgba(77, 120, 255, 0.15);
+    border-color: rgba(77, 120, 255, 0.4);
+    outline: none;
+}
+
+.pm__title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+    text-align: center;
+    flex: 1;
+}
+
+.pm__header-spacer {
+    width: 36px;
+    flex-shrink: 0;
+}
+
+/* ── Cuerpo (scroll area) ────────────────────────────────────────────────── */
+
+.pm__body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* gap = --space-5 */
+}
+
+.pm__body::-webkit-scrollbar {
+    width: 3px;
+}
+
+.pm__body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.pm__body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+}
+
+/* ── Buscador ────────────────────────────────────────────────────────────── */
+
+.pm__search-wrap {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.pm__search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.35);
+    pointer-events: none;
+}
+
+.pm__search-input {
+    width: 100%;
+    padding: 11px 16px 11px 40px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 0.85rem;
+    caret-color: #4d78ff;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.pm__search-input::placeholder {
+    color: rgba(255, 255, 255, 0.28);
+}
+
+.pm__search-input:focus {
+    outline: none;
+    border-color: rgba(77, 120, 255, 0.4);
+    background: rgba(77, 120, 255, 0.04);
+}
+
+/* ── Lista de métodos ────────────────────────────────────────────────────── */
+
+.pm__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* ── Item card ───────────────────────────────────────────────────────────── */
+
+.pm__item {
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: border-color 0.25s ease, background 0.25s ease,
+        box-shadow 0.25s ease;
+    overflow: hidden;
+}
+
+.pm__item:hover {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.pm__item--active {
+    border-color: rgba(77, 120, 255, 0.35);
+    background: rgba(77, 120, 255, 0.06);
+    box-shadow: 0 0 0 1px rgba(77, 120, 255, 0.12) inset,
+        0 4px 20px rgba(77, 120, 255, 0.08);
+}
+
+.pm__item--active:hover {
+    border-color: rgba(77, 120, 255, 0.5);
+    background: rgba(77, 120, 255, 0.09);
+}
+
+/* ── Fila interna ────────────────────────────────────────────────────────── */
+
+.pm__item-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 16px;
+    transition: background 0.2s ease;
+}
+
+.pm__item-row:focus-visible {
+    outline: 2px solid rgba(77, 120, 255, 0.6);
+    outline-offset: -2px;
+}
+
+/* ── Logo del método de pago ─────────────────────────────────────────────── */
+
+.pm__card-logo {
+    width: 42px;
+    height: 28px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Información de la tarjeta ───────────────────────────────────────────── */
+
+.pm__item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.pm__item-number {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pm__item-expiry {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.38);
+    letter-spacing: 0.3px;
+}
+
+/* ── Acciones (badge + íconos) ───────────────────────────────────────────── */
+
+.pm__item-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* Badge "Default" */
+.pm__badge {
+    padding: 3px 10px;
+    border-radius: 99px;
+    background: rgba(251, 191, 36, 0.15);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    color: #fbbf24;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Kebab (decorativo) */
+.pm__kebab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.3);
+    cursor: default;
+    transition: color 0.2s ease;
+    padding: 0;
+}
+
+.pm__kebab:hover {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* Botones edit / delete */
+.pm__action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    padding: 0;
+}
+
+.pm__action-btn--edit {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.pm__action-btn--edit:hover,
+.pm__action-btn--edit:focus-visible {
+    background: rgba(77, 120, 255, 0.12);
+    border-color: rgba(77, 120, 255, 0.3);
+    color: #7ba8ff;
+    outline: none;
+}
+
+.pm__action-btn--delete {
+    color: rgba(255, 80, 80, 0.55);
+}
+
+.pm__action-btn--delete:hover,
+.pm__action-btn--delete:focus-visible {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #f87171;
+    outline: none;
+}
+
+/* ── Footer sticky con CTA ───────────────────────────────────────────────── */
+
+.pm__footer {
+    flex-shrink: 0;
+    padding: 16px 20px 32px;
+    background: linear-gradient(to top,
+            rgba(11, 16, 30, 1) 55%,
+            rgba(11, 16, 30, 0));
+}
+
+.pm__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 15px;
+    border-radius: 14px;
+    background: rgba(77, 120, 255, 0.08);
+    border: 1px solid rgba(77, 120, 255, 0.25);
+    color: rgba(255, 255, 255, 0.85);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease,
+        box-shadow 0.25s ease, transform 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.pm__cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(77, 120, 255, 0.12);
+    transform: translateX(-101%);
+    transition: transform 0.35s ease;
+}
+
+.pm__cta:hover::before {
+    transform: translateX(0);
+}
+
+.pm__cta:hover {
+    border-color: rgba(77, 120, 255, 0.5);
+    box-shadow: 0 0 24px rgba(77, 120, 255, 0.18);
+    transform: translateY(-1px);
+}
+
+.pm__cta:active {
+    transform: translateY(0);
+}
+
+.pm__cta:focus-visible {
+    outline: 2px solid rgba(77, 120, 255, 0.6);
+    outline-offset: 2px;
+}
+
+
+/* ============================================================================
    ANIMACIONES
    ========================================================================== */
 
