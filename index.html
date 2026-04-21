@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Travel App</title>
+  <title>UBERX — Travel App</title>
 
-  <!-- ORDEN IMPORTANTE -->
   <link rel="stylesheet" href="css/utils.css">
   <link rel="stylesheet" href="css/app.css">
 </head>
@@ -13,127 +12,245 @@
 <body class="app">
   <main class="app__main">
 
-<!-- Splash -->
-<section id="splash" class="screen screen--splash screen--active">
-  <header class="screen__header">
-    <h1 class="screen__title">UBERX</h1>
-  </header>
-
-  <div class="screen__line"></div>
-
-  <nav class="screen__nav">
-    <a href="#home" class="button button--primary">Comenzar</a>
-  </nav>
-
-  <div class="screen__loading">
-    <div class="loading__dot"></div>
-    <div class="loading__dot"></div>
-    <div class="loading__dot"></div>
-  </div>
-</section>
-
-    <!-- Home -->
-    <section id="home" class="screen screen--home">
+    <!-- ===================== SPLASH ===================== -->
+    <section id="splash" class="screen screen--splash screen--active">
       <header class="screen__header">
-        <h1 class="screen__title">Inicio</h1>
+        <h1 class="screen__title">UBERX</h1>
       </header>
 
-      <nav class="home__nav home__nav--primary">
-        <a href="#travel" class="button">Buscar Viajes</a>
-        <a href="#payments" class="button">Pagos</a>
+      <div class="screen__line"></div>
+
+      <nav class="screen__nav">
+        <a href="#home" class="button button--primary">Comenzar</a>
       </nav>
 
-      <nav class="home__nav home__nav--secondary">
-        <a href="#splash" class="button button--secondary">Atrás</a>
-      </nav>
+      <div class="screen__loading">
+        <div class="loading__dot"></div>
+        <div class="loading__dot loading__dot--delay-1"></div>
+        <div class="loading__dot loading__dot--delay-2"></div>
+      </div>
     </section>
 
-    <!-- Travel -->
+    <!-- ===================== HOME ===================== -->
+    <!--
+      NAVEGACIÓN :target
+      ─────────────────────────────────────────────────
+      Este <section id="home"> se vuelve visible cuando
+      la URL tiene el hash #home (ej: index.html#home).
+      CSS lo detecta con la pseudo-clase :target y aplica
+      opacity:1 + pointer-events:auto.
+      Sin #home en la URL, queda invisible (opacity:0).
+      El fallback body:not(:has(.screen:target)) .screen--active
+      muestra el splash al cargar por primera vez.
+      ─────────────────────────────────────────────────
+    -->
+    <section id="home" class="screen screen--home">
+
+      <!-- Zona de scroll: header + contenido -->
+      <div class="home__scroll-area">
+
+        <!-- Header: avatar + h1 saludo + botón notif -->
+        <header class="home__header">
+          <div class="home__user">
+            <div class="home__avatar-draw" role="img" aria-label="Avatar de William Teig"></div>
+            <div class="home__user-text">
+              <span class="home__greeting">Good morning</span>
+              <h1 class="home__username">William Teig</h1>
+            </div>
+          </div>
+          <button class="home__notif-btn" aria-label="Notificaciones">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </button>
+        </header>
+
+        <!-- Banner de seguridad (card con ilustración) -->
+        <div class="home__banner">
+          <div class="home__banner-content">
+            <h3 class="home__banner-title">Always Wear Your Helmet When Traveling In Space</h3>
+            <p class="home__banner-link">About Safe Space Flight ›</p>
+          </div>
+          <div class="home__banner-figure">
+            <div class="draw-astronaut" role="img" aria-label="Astronauta"></div>
+          </div>
+        </div>
+
+        <!-- Acciones rápidas: Travel, Explore, Book -->
+        <nav class="home__quick-nav" aria-label="Acciones rápidas">
+          <a href="#travel" class="quick-card">
+            <span class="quick-card__icon" aria-hidden="true">🚀</span>
+            <span class="quick-card__label">Travel</span>
+          </a>
+          <a href="#explore" class="quick-card">
+            <span class="quick-card__icon" aria-hidden="true">🪐</span>
+            <span class="quick-card__label">Explore</span>
+          </a>
+          <a href="#book" class="quick-card">
+            <span class="quick-card__icon" aria-hidden="true">👨‍🚀</span>
+            <span class="quick-card__label">Book</span>
+          </a>
+        </nav>
+
+        <!-- Buscador -->
+        <div class="home__search">
+          <label for="search-destination" class="visually-hidden">Buscar destino</label>
+          <div class="home__search-bar">
+            <svg class="home__search-icon" width="16" height="16" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input
+              id="search-destination"
+              class="home__search-input"
+              type="search"
+              placeholder="Where to...?"
+              autocomplete="off"
+            >
+            <!-- Ícono reloj: historial decorativo (no funcional) -->
+            <div class="home__search-history" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Now</span>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Listado de destinos -->
+        <ul class="home__destinations-list" aria-label="Destinos disponibles">
+          <li class="destination-item">
+            <div class="planet-css planet-css--earth" role="img" aria-label="Planeta Tierra"></div>
+            <div class="destination-item__info">
+              <h4 class="destination-item__name">Earth</h4>
+              <p class="destination-item__sub">Solar System, Planet 3</p>
+            </div>
+            <span class="destination-item__arrow" aria-hidden="true">›</span>
+          </li>
+          <li class="destination-item">
+            <div class="planet-css planet-css--mars" role="img" aria-label="Planeta Marte"></div>
+            <div class="destination-item__info">
+              <h4 class="destination-item__name">Mars</h4>
+              <p class="destination-item__sub">Solar System, Planet 4</p>
+            </div>
+            <span class="destination-item__arrow" aria-hidden="true">›</span>
+          </li>
+          <li class="destination-item">
+            <div class="planet-css planet-css--iss" role="img" aria-label="Estación Espacial Internacional"></div>
+            <div class="destination-item__info">
+              <h4 class="destination-item__name">International Space Station</h4>
+              <p class="destination-item__sub">Low Earth Orbit</p>
+            </div>
+            <span class="destination-item__arrow" aria-hidden="true">›</span>
+          </li>
+          <li class="destination-item">
+            <div class="planet-css planet-css--moon" role="img" aria-label="Luna"></div>
+            <div class="destination-item__info">
+              <h4 class="destination-item__name">Moon</h4>
+              <p class="destination-item__sub">Earth's Natural Satellite</p>
+            </div>
+            <span class="destination-item__arrow" aria-hidden="true">›</span>
+          </li>
+        </ul>
+
+      </div><!-- /home__scroll-area -->
+
+      <!-- Bottom nav — estático, fuera del scroll -->
+      <nav class="home__bottom-nav" aria-label="Navegación principal">
+        <a href="#home" class="bottom-nav__item" aria-current="page">
+          <svg width="20" height="20" viewBox="0 0 24 24"
+               fill="currentColor" aria-hidden="true">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+          </svg>
+          <span>Home</span>
+        </a>
+        <div class="bottom-nav__divider" aria-hidden="true"></div>
+        <a href="#journeys" class="bottom-nav__item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span>Journeys</span>
+        </a>
+      </nav>
+
+    </section><!-- /#home -->
+
+    <!-- ===================== TRAVEL ===================== -->
     <section id="travel" class="screen screen--travel">
       <header class="screen__header">
         <h1 class="screen__title">Buscar Viajes</h1>
       </header>
-
       <form class="travel__form">
         <fieldset class="travel__fieldset">
           <legend>Destino</legend>
           <input class="travel__input" type="text" placeholder="¿A dónde viajas?">
         </fieldset>
-
         <fieldset class="travel__fieldset">
           <legend>Fechas</legend>
           <input class="travel__input" type="date">
           <input class="travel__input" type="date">
         </fieldset>
-
         <a href="#payments" class="button button--primary">Continuar</a>
       </form>
-
       <nav class="travel__nav">
         <a href="#home" class="button button--secondary">Atrás</a>
       </nav>
     </section>
 
-    <!-- Payments -->
+    <!-- ===================== PAYMENTS ===================== -->
     <section id="payments" class="screen screen--payments">
       <header class="screen__header">
         <h1 class="screen__title">Pagos</h1>
       </header>
-
       <form class="payments__form">
         <fieldset class="payments__fieldset">
           <legend>Método de Pago</legend>
-
           <label class="payments__option">
-            <input type="radio" name="payment">
-            Tarjeta de Crédito
+            <input type="radio" name="payment"> Tarjeta de Crédito
           </label>
-
           <label class="payments__option">
-            <input type="radio" name="payment">
-            Transferencia Bancaria
+            <input type="radio" name="payment"> Transferencia Bancaria
           </label>
         </fieldset>
-
         <fieldset class="payments__fieldset">
           <legend>Datos de Tarjeta</legend>
-
           <input class="payments__input" type="text" placeholder="Número de tarjeta">
           <input class="payments__input" type="text" placeholder="Nombre del titular">
           <input class="payments__input" type="text" placeholder="MM/YY">
           <input class="payments__input" type="text" placeholder="CVV">
         </fieldset>
-
         <a href="#receipt" class="button button--primary">Pagar</a>
       </form>
-
       <nav class="payments__nav">
         <a href="#travel" class="button button--secondary">Atrás</a>
       </nav>
     </section>
 
-    <!-- Receipt -->
+    <!-- ===================== RECEIPT ===================== -->
     <section id="receipt" class="screen screen--receipt">
       <header class="screen__header">
         <h1 class="screen__title">Confirmación</h1>
       </header>
-
       <article class="receipt">
         <h2 class="receipt__title">¡Pago Realizado!</h2>
         <p class="receipt__text">Tu viaje ha sido confirmado exitosamente.</p>
-
         <dl class="receipt__details">
-          <dt>Número de Confirmación</dt>
-          <dd>TRV-2024-001</dd>
-
-          <dt>Monto Total</dt>
-          <dd>$850.00 USD</dd>
-
-          <dt>Fecha de Viaje</dt>
-          <dd>15 de Mayo, 2024</dd>
+          <dt>Número de Confirmación</dt><dd>TRV-2024-001</dd>
+          <dt>Monto Total</dt><dd>$850.00 USD</dd>
+          <dt>Fecha de Viaje</dt><dd>15 de Mayo, 2024</dd>
         </dl>
       </article>
-
       <nav class="receipt__nav">
         <a href="#home" class="button button--primary">Volver al Inicio</a>
       </nav>
