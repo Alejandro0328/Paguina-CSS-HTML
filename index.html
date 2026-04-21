@@ -32,24 +32,10 @@
     </section>
 
     <!-- ===================== HOME ===================== -->
-    <!--
-      NAVEGACIÓN :target
-      ─────────────────────────────────────────────────
-      Este <section id="home"> se vuelve visible cuando
-      la URL tiene el hash #home (ej: index.html#home).
-      CSS lo detecta con la pseudo-clase :target y aplica
-      opacity:1 + pointer-events:auto.
-      Sin #home en la URL, queda invisible (opacity:0).
-      El fallback body:not(:has(.screen:target)) .screen--active
-      muestra el splash al cargar por primera vez.
-      ─────────────────────────────────────────────────
-    -->
     <section id="home" class="screen screen--home">
 
-      <!-- Zona de scroll: header + contenido -->
       <div class="home__scroll-area">
 
-        <!-- Header: avatar + h1 saludo + botón notif -->
         <header class="home__header">
           <div class="home__user">
             <div class="home__avatar-draw" role="img" aria-label="Avatar de William Teig"></div>
@@ -67,7 +53,6 @@
           </button>
         </header>
 
-        <!-- Banner de seguridad (card con ilustración) -->
         <div class="home__banner">
           <div class="home__banner-content">
             <h3 class="home__banner-title">Always Wear Your Helmet When Traveling In Space</h3>
@@ -78,7 +63,6 @@
           </div>
         </div>
 
-        <!-- Acciones rápidas: Travel, Explore, Book -->
         <nav class="home__quick-nav" aria-label="Acciones rápidas">
           <a href="#travel" class="quick-card">
             <span class="quick-card__icon" aria-hidden="true">🚀</span>
@@ -94,7 +78,6 @@
           </a>
         </nav>
 
-        <!-- Buscador -->
         <div class="home__search">
           <label for="search-destination" class="visually-hidden">Buscar destino</label>
           <div class="home__search-bar">
@@ -109,7 +92,6 @@
               placeholder="Where to...?"
               autocomplete="off"
             >
-            <!-- Ícono reloj: historial decorativo (no funcional) -->
             <div class="home__search-history" aria-hidden="true">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
                    stroke="currentColor" stroke-width="2">
@@ -125,10 +107,9 @@
           </div>
         </div>
 
-        <!-- Listado de destinos -->
         <ul class="home__destinations-list" aria-label="Destinos disponibles">
           <li class="destination-item">
-            <div class="planet-css planet-css--earth" role="img" aria-label="Planeta Tierra"></div>
+            <div class="planet-css planet-css--earth" role="img" aria-label="Tierra"></div>
             <div class="destination-item__info">
               <h4 class="destination-item__name">Earth</h4>
               <p class="destination-item__sub">Solar System, Planet 3</p>
@@ -136,7 +117,7 @@
             <span class="destination-item__arrow" aria-hidden="true">›</span>
           </li>
           <li class="destination-item">
-            <div class="planet-css planet-css--mars" role="img" aria-label="Planeta Marte"></div>
+            <div class="planet-css planet-css--mars" role="img" aria-label="Marte"></div>
             <div class="destination-item__info">
               <h4 class="destination-item__name">Mars</h4>
               <p class="destination-item__sub">Solar System, Planet 4</p>
@@ -144,7 +125,7 @@
             <span class="destination-item__arrow" aria-hidden="true">›</span>
           </li>
           <li class="destination-item">
-            <div class="planet-css planet-css--iss" role="img" aria-label="Estación Espacial Internacional"></div>
+            <div class="planet-css planet-css--iss" role="img" aria-label="ISS"></div>
             <div class="destination-item__info">
               <h4 class="destination-item__name">International Space Station</h4>
               <p class="destination-item__sub">Low Earth Orbit</p>
@@ -161,9 +142,8 @@
           </li>
         </ul>
 
-      </div><!-- /home__scroll-area -->
+      </div>
 
-      <!-- Bottom nav — estático, fuera del scroll -->
       <nav class="home__bottom-nav" aria-label="Navegación principal">
         <a href="#home" class="bottom-nav__item" aria-current="page">
           <svg width="20" height="20" viewBox="0 0 24 24"
@@ -184,29 +164,185 @@
         </a>
       </nav>
 
-    </section><!-- /#home -->
+    </section>
+
 
     <!-- ===================== TRAVEL ===================== -->
+    <!--
+      SISTEMA DE ESTADOS SIN JS — TRAVEL SCREEN
+      ─────────────────────────────────────────────────────
+      1. BOTTOM SHEET  → checkbox #sheet-toggle
+         • Contraído por defecto (height: 56%)
+         • Al marcar: .sheet-toggle__input:checked ~ .travel__sheet → height: 80%
+         • El label .sheet__handle-area hace toggle del checkbox
+
+      2. NAVE ACTIVA → radio inputs #ship-crew / #ship-star / #ship-dream
+         • Cada radio controla qué card queda resaltada
+         • #ship-crew:checked ~ .travel__sheet .ship-item:nth-child(1) → borde activo
+
+      3. SWIPE TO CONFIRM → input[type=range] + :has()
+         • El range es invisible sobre el track
+         • :has(input:active) → feedback visual al arrastrar
+         • :has(input:focus-visible) → estado "confirmado" persistente
+      ─────────────────────────────────────────────────────
+    -->
     <section id="travel" class="screen screen--travel">
-      <header class="screen__header">
-        <h1 class="screen__title">Buscar Viajes</h1>
-      </header>
-      <form class="travel__form">
-        <fieldset class="travel__fieldset">
-          <legend>Destino</legend>
-          <input class="travel__input" type="text" placeholder="¿A dónde viajas?">
-        </fieldset>
-        <fieldset class="travel__fieldset">
-          <legend>Fechas</legend>
-          <input class="travel__input" type="date">
-          <input class="travel__input" type="date">
-        </fieldset>
-        <a href="#payments" class="button button--primary">Continuar</a>
-      </form>
-      <nav class="travel__nav">
-        <a href="#home" class="button button--secondary">Atrás</a>
-      </nav>
-    </section>
+
+      <!-- Checkbox oculto: controla el bottom sheet -->
+      <input type="checkbox" id="sheet-toggle" class="sheet-toggle__input" aria-hidden="true">
+
+      <!-- Radios ocultos: controlan la nave activa -->
+      <input type="radio" name="ship" id="ship-crew"  class="ship-radio" value="crew"  checked>
+      <input type="radio" name="ship" id="ship-star"  class="ship-radio" value="star">
+      <input type="radio" name="ship" id="ship-dream" class="ship-radio" value="dream">
+
+      <!-- Fondo espacial con SVG de ruta orbital -->
+      <div class="travel__map" aria-hidden="true">
+        <div class="travel__stars"></div>
+
+        <svg class="travel__route-svg" viewBox="0 0 320 300"
+             fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M 85 240 Q 180 60 235 100"
+            stroke="rgba(255,255,255,0.3)"
+            stroke-width="1.5"
+            stroke-dasharray="6 9"
+            stroke-linecap="round"
+          />
+          <circle cx="85" cy="240" r="3" fill="rgba(255,255,255,0.45)"/>
+        </svg>
+
+        <div class="travel__planet travel__planet--earth">
+          <div class="planet-css planet-css--earth"></div>
+          <span class="travel__planet-label">Earth <span aria-hidden="true">›</span></span>
+        </div>
+
+        <div class="travel__planet travel__planet--mars">
+          <div class="planet-css planet-css--mars"></div>
+          <span class="travel__planet-label">Mars <span aria-hidden="true">›</span></span>
+        </div>
+      </div>
+
+      <!-- Botón back -->
+      <a href="#home" class="travel__back-btn" aria-label="Volver a Home">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </a>
+
+      <!-- Bottom Sheet -->
+      <div class="travel__sheet">
+
+        <!-- Handle: toca para expandir/contraer -->
+        <label for="sheet-toggle" class="sheet__handle-area" aria-label="Expandir opciones">
+          <div class="sheet__handle"></div>
+          <p class="sheet__alert">Fares are higher due to space debris</p>
+        </label>
+
+        <!-- Estado CONTRAÍDO: nave seleccionada en detalle -->
+        <div class="sheet__collapsed">
+          <div class="ship-illustration ship-illustration--crew"
+               role="img" aria-label="Crew Dragon"></div>
+          <div class="ship-detail">
+            <div class="ship-detail__header">
+              <h2 class="ship-detail__name">Crew Dragon</h2>
+              <div class="ship-detail__price">
+                <span class="ship-detail__amount">48.5</span>
+                <div class="ship-detail__token" aria-label="Space token"></div>
+              </div>
+            </div>
+            <p class="ship-detail__meta">Next Launch: 12/03/53, 19:30</p>
+            <p class="ship-detail__meta">Journey duration: 18 Days, 13 Hours</p>
+          </div>
+        </div>
+
+        <!-- Estado EXPANDIDO: lista de naves -->
+        <div class="sheet__expanded">
+          <ul class="ships-list" role="list" aria-label="Naves disponibles">
+
+            <li class="ship-item">
+              <label for="ship-crew" class="ship-item__label">
+                <div class="ship-mini ship-mini--crew" aria-hidden="true"></div>
+                <div class="ship-item__info">
+                  <h3 class="ship-item__name">Crew Dragon</h3>
+                  <p class="ship-item__date">Next Launch: 12/03/53, 19:30</p>
+                </div>
+                <div class="ship-item__price">
+                  <span>48.5</span>
+                  <div class="ship-item__token" aria-hidden="true"></div>
+                </div>
+              </label>
+            </li>
+
+            <li class="ship-item">
+              <label for="ship-star" class="ship-item__label">
+                <div class="ship-mini ship-mini--starliner" aria-hidden="true"></div>
+                <div class="ship-item__info">
+                  <h3 class="ship-item__name">Starliner</h3>
+                  <p class="ship-item__date">Next Launch: 24/03/53, 12:30</p>
+                </div>
+                <div class="ship-item__price">
+                  <span>51.2</span>
+                  <div class="ship-item__token" aria-hidden="true"></div>
+                </div>
+              </label>
+            </li>
+
+            <li class="ship-item">
+              <label for="ship-dream" class="ship-item__label">
+                <div class="ship-mini ship-mini--dreamchaser" aria-hidden="true"></div>
+                <div class="ship-item__info">
+                  <h3 class="ship-item__name">Dream Chaser</h3>
+                  <p class="ship-item__date">Next Launch: 24/03/53, 12:30</p>
+                </div>
+                <div class="ship-item__price">
+                  <span>102.5</span>
+                  <div class="ship-item__token" aria-hidden="true"></div>
+                </div>
+              </label>
+            </li>
+
+          </ul>
+        </div>
+
+        <!-- Acciones fijas -->
+        <div class="sheet__actions">
+
+          <a href="#payments" class="sheet__wallet-btn">
+            <div class="wallet-icon" aria-hidden="true"></div>
+            <span>Connect Wallet</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </a>
+
+          <div class="swipe-confirm">
+            <label class="swipe-confirm__track" aria-label="Swipe to confirm booking">
+              <div class="swipe-confirm__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </div>
+              <input
+                type="range"
+                min="0" max="100" value="0" step="1"
+                class="swipe-confirm__range"
+                aria-label="Arrastra para confirmar reserva"
+              >
+              <span class="swipe-confirm__text">Swipe To Confirm Your Booking</span>
+              <span class="swipe-confirm__done">Booking Confirmed ✓</span>
+            </label>
+          </div>
+
+        </div>
+
+      </div><!-- /travel__sheet -->
+
+    </section><!-- /#travel -->
+
 
     <!-- ===================== PAYMENTS ===================== -->
     <section id="payments" class="screen screen--payments">
