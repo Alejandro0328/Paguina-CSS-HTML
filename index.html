@@ -37,17 +37,8 @@
 
         <header class="home__header">
           <div class="home__user">
-            <!--
-              Avatar: reemplaza .home__avatar-draw (CSS-drawn) por imagen real.
-              Mantiene clases, border-radius y border desde CSS.
-            -->
-            <img
-              src="/assets/img/avatar.png"
-              alt="Avatar de William Teig"
-              class="home__avatar-draw"
-              width="44"
-              height="44"
-            >
+            <!-- Avatar: div CSS-drawn -->
+            <div class="home__avatar-draw" aria-hidden="true"></div>
             <div class="home__user-text">
               <span class="home__greeting">Good morning</span>
               <h1 class="home__username">William Teig</h1>
@@ -68,17 +59,8 @@
             <p class="home__banner-link">About Safe Space Flight ›</p>
           </div>
           <div class="home__banner-figure">
-            <!--
-              Astronauta: reemplaza .draw-astronaut (CSS-drawn) por imagen real.
-              .home__banner-figure conserva su animación floatAstronaut desde CSS.
-            -->
-            <img
-              src="/assets/img/astronaut.png"
-              alt="Astronauta con casco espacial"
-              class="draw-astronaut"
-              width="54"
-              height="62"
-            >
+            <!-- Astronauta: div CSS-drawn -->
+            <div class="draw-astronaut" aria-hidden="true"></div>
           </div>
         </div>
 
@@ -124,12 +106,7 @@
         <div class="home__destinations-list" role="list" aria-label="Destinos disponibles">
 
           <a href="#travel" class="destination-item">
-            <!--
-              Planetas: reemplazan .planet-css + modificadores (CSS-drawn) por imágenes reales.
-              .planet-css mantiene width, height, border-radius y box-shadow desde CSS.
-              Los modificadores de color (--earth, --mars, etc.) se limpian del HTML
-              porque la imagen ya aporta el color; el CSS de .planet-css base persiste.
-            -->
+            <!-- PLANETA — img intacta -->
             <img
               src="/assets/img/tierra.jpg"
               alt="Planeta Tierra"
@@ -145,6 +122,7 @@
           </a>
 
           <a href="#travel" class="destination-item">
+            <!-- PLANETA — img intacta -->
             <img
               src="/assets/img/marte.jpeg"
               alt="Planeta Marte"
@@ -160,8 +138,9 @@
           </a>
 
           <a href="#travel" class="destination-item">
+            <!-- PLANETA — img intacta -->
             <img
-              src="/assets/img/iss.png"
+              src="/assets/img/station.jpeg"
               alt="Estación Espacial Internacional"
               class="planet-css"
               width="44"
@@ -175,8 +154,9 @@
           </a>
 
           <a href="#travel" class="destination-item">
+            <!-- PLANETA — img intacta -->
             <img
-              src="/assets/img/moon.png"
+              src="/assets/img/luna.jpg"
               alt="La Luna"
               class="planet-css"
               width="44"
@@ -232,13 +212,9 @@
         </svg>
 
         <div class="travel__planet travel__planet--earth">
-          <!--
-            Planetas del mapa travel: reemplazan .planet-css CSS-drawn.
-            .travel__planet .planet-css conserva width/height/shadow.
-            .travel__planet--mars .planet-css tiene width:64px desde CSS.
-          -->
+          <!-- PLANETA — img intacta -->
           <img
-            src="/assets/img/earth.png"
+            src="/assets/img/tierra.jpg"
             alt="Tierra"
             class="planet-css"
             width="48"
@@ -248,8 +224,9 @@
         </div>
 
         <div class="travel__planet travel__planet--mars">
+          <!-- PLANETA — img intacta -->
           <img
-            src="/assets/img/mars.png"
+            src="/assets/img/marte.jpeg"
             alt="Marte"
             class="planet-css"
             width="64"
@@ -274,17 +251,8 @@
         </label>
 
         <div class="sheet__collapsed">
-          <!--
-            Nave principal (estado contraído): reemplaza .ship-illustration--crew (CSS-drawn).
-            .ship-illustration conserva width:72px, height:80px, flex-shrink:0.
-          -->
-          <img
-            src="/assets/img/crew-dragon.png"
-            alt="Nave Crew Dragon"
-            class="ship-illustration ship-illustration--crew"
-            width="72"
-            height="80"
-          >
+          <!-- Nave principal: div CSS-drawn -->
+          <div class="ship-illustration ship-illustration--crew" aria-hidden="true"></div>
           <div class="ship-detail">
             <div class="ship-detail__header">
               <h2 class="ship-detail__name">Crew Dragon</h2>
@@ -304,17 +272,8 @@
             <li class="ship-item">
               <label for="ship-crew" class="ship-item__label"
                      aria-label="Seleccionar Crew Dragon, 48.5, lanzamiento 12/03/53">
-                <!--
-                  Miniaturas de nave (lista expandida): reemplazan .ship-mini CSS-drawn.
-                  .ship-mini conserva 46x46px, border-radius:8px, overflow:hidden.
-                -->
-                <img
-                  src="/assets/img/crew-dragon.png"
-                  alt="Crew Dragon"
-                  class="ship-mini ship-mini--crew"
-                  width="46"
-                  height="46"
-                >
+                <!-- Miniatura nave: div CSS-drawn -->
+                <div class="ship-mini ship-mini--crew" aria-hidden="true"></div>
                 <div class="ship-item__info">
                   <h3 class="ship-item__name">Crew Dragon</h3>
                   <p class="ship-item__date">Next Launch: 12/03/53, 19:30</p>
@@ -329,13 +288,8 @@
             <li class="ship-item">
               <label for="ship-star" class="ship-item__label"
                      aria-label="Seleccionar Starliner, 51.2, lanzamiento 24/03/53">
-                <img
-                  src="/assets/img/starliner.png"
-                  alt="Starliner"
-                  class="ship-mini ship-mini--starliner"
-                  width="46"
-                  height="46"
-                >
+                <!-- Miniatura nave: div CSS-drawn -->
+                <div class="ship-mini ship-mini--starliner" aria-hidden="true"></div>
                 <div class="ship-item__info">
                   <h3 class="ship-item__name">Starliner</h3>
                   <p class="ship-item__date">Next Launch: 24/03/53, 12:30</p>
@@ -350,13 +304,8 @@
             <li class="ship-item">
               <label for="ship-dream" class="ship-item__label"
                      aria-label="Seleccionar Dream Chaser, 102.5, lanzamiento 24/03/53">
-                <img
-                  src="/assets/img/dream-chaser.png"
-                  alt="Dream Chaser"
-                  class="ship-mini ship-mini--dreamchaser"
-                  width="46"
-                  height="46"
-                >
+                <!-- Miniatura nave: div CSS-drawn -->
+                <div class="ship-mini ship-mini--dreamchaser" aria-hidden="true"></div>
                 <div class="ship-item__info">
                   <h3 class="ship-item__name">Dream Chaser</h3>
                   <p class="ship-item__date">Next Launch: 24/03/53, 12:30</p>
@@ -719,7 +668,7 @@
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
                  stroke="currentColor" stroke-width="1.8">
               <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>http://127.0.0.1:3000/index.html?vscode-livepreview=true#travel
             </svg>
           </span>
           <span class="rc__action-label">Categorize</span>
