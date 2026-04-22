@@ -11,11 +11,6 @@
 <body class="app">
   <main class="app__main">
 
-    <!--
-      RADIOS DE PAYMENTS — deben estar FUERA del <section id="payments">
-      para que el selector CSS  #pm-radio-X:checked ~ .screen--payments  funcione.
-      El selector ~ requiere que el radio sea hermano anterior del screen.
-    -->
     <input type="radio" name="pm-select" id="pm-radio-1234" class="pm__radio" aria-hidden="true">
     <input type="radio" name="pm-select" id="pm-radio-5678" class="pm__radio" aria-hidden="true">
     <input type="radio" name="pm-select" id="pm-radio-pp"   class="pm__radio" aria-hidden="true">
@@ -42,13 +37,23 @@
 
         <header class="home__header">
           <div class="home__user">
-            <div class="home__avatar-draw" role="img" aria-label="Avatar de William Teig"></div>
+            <!--
+              Avatar: reemplaza .home__avatar-draw (CSS-drawn) por imagen real.
+              Mantiene clases, border-radius y border desde CSS.
+            -->
+            <img
+              src="/assets/img/avatar.png"
+              alt="Avatar de William Teig"
+              class="home__avatar-draw"
+              width="44"
+              height="44"
+            >
             <div class="home__user-text">
               <span class="home__greeting">Good morning</span>
               <h1 class="home__username">William Teig</h1>
             </div>
           </div>
-          <button class="home__notif-btn" aria-label="Notificaciones">
+          <button class="home__notif-btn" type="button" aria-label="Notificaciones">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
@@ -59,11 +64,21 @@
 
         <div class="home__banner">
           <div class="home__banner-content">
-            <h3 class="home__banner-title">Always Wear Your Helmet When Traveling In Space</h3>
+            <h2 class="home__banner-title">Always Wear Your Helmet When Traveling In Space</h2>
             <p class="home__banner-link">About Safe Space Flight ›</p>
           </div>
           <div class="home__banner-figure">
-            <div class="draw-astronaut" role="img" aria-label="Astronauta"></div>
+            <!--
+              Astronauta: reemplaza .draw-astronaut (CSS-drawn) por imagen real.
+              .home__banner-figure conserva su animación floatAstronaut desde CSS.
+            -->
+            <img
+              src="/assets/img/astronaut.png"
+              alt="Astronauta con casco espacial"
+              class="draw-astronaut"
+              width="54"
+              height="62"
+            >
           </div>
         </div>
 
@@ -106,40 +121,75 @@
           </div>
         </div>
 
-        <ul class="home__destinations-list" aria-label="Destinos disponibles">
-          <li class="destination-item">
-            <div class="planet-css planet-css--earth" role="img" aria-label="Tierra"></div>
+        <div class="home__destinations-list" role="list" aria-label="Destinos disponibles">
+
+          <a href="#travel" class="destination-item">
+            <!--
+              Planetas: reemplazan .planet-css + modificadores (CSS-drawn) por imágenes reales.
+              .planet-css mantiene width, height, border-radius y box-shadow desde CSS.
+              Los modificadores de color (--earth, --mars, etc.) se limpian del HTML
+              porque la imagen ya aporta el color; el CSS de .planet-css base persiste.
+            -->
+            <img
+              src="/assets/img/tierra.jpg"
+              alt="Planeta Tierra"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
             <div class="destination-item__info">
-              <h4 class="destination-item__name">Earth</h4>
+              <h3 class="destination-item__name">Earth</h3>
               <p class="destination-item__sub">Solar System, Planet 3</p>
             </div>
             <span class="destination-item__arrow" aria-hidden="true">›</span>
-          </li>
-          <li class="destination-item">
-            <div class="planet-css planet-css--mars" role="img" aria-label="Marte"></div>
+          </a>
+
+          <a href="#travel" class="destination-item">
+            <img
+              src="/assets/img/marte.jpeg"
+              alt="Planeta Marte"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
             <div class="destination-item__info">
-              <h4 class="destination-item__name">Mars</h4>
+              <h3 class="destination-item__name">Mars</h3>
               <p class="destination-item__sub">Solar System, Planet 4</p>
             </div>
             <span class="destination-item__arrow" aria-hidden="true">›</span>
-          </li>
-          <li class="destination-item">
-            <div class="planet-css planet-css--iss" role="img" aria-label="ISS"></div>
+          </a>
+
+          <a href="#travel" class="destination-item">
+            <img
+              src="/assets/img/iss.png"
+              alt="Estación Espacial Internacional"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
             <div class="destination-item__info">
-              <h4 class="destination-item__name">International Space Station</h4>
+              <h3 class="destination-item__name">International Space Station</h3>
               <p class="destination-item__sub">Low Earth Orbit</p>
             </div>
             <span class="destination-item__arrow" aria-hidden="true">›</span>
-          </li>
-          <li class="destination-item">
-            <div class="planet-css planet-css--moon" role="img" aria-label="Luna"></div>
+          </a>
+
+          <a href="#travel" class="destination-item">
+            <img
+              src="/assets/img/moon.png"
+              alt="La Luna"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
             <div class="destination-item__info">
-              <h4 class="destination-item__name">Moon</h4>
+              <h3 class="destination-item__name">Moon</h3>
               <p class="destination-item__sub">Earth's Natural Satellite</p>
             </div>
             <span class="destination-item__arrow" aria-hidden="true">›</span>
-          </li>
-        </ul>
+          </a>
+
+        </div><!-- /home__destinations-list -->
 
       </div><!-- /home__scroll-area -->
 
@@ -164,18 +214,12 @@
     </section>
 
     <!-- ===================== TRAVEL ===================== -->
-    <!--
-      FLUJO DE NAVEGACIÓN:
-      travel → Connect Wallet → #payments
-      travel → Swipe Confirm → #payments  (simulación visual, luego usuario elige método)
-      payments → seleccionar método → aparece "Confirm & Pay" → #receipt
-    -->
     <section id="travel" class="screen screen--travel">
 
-      <input type="checkbox" id="sheet-toggle" class="sheet-toggle__input" aria-hidden="true" tabindex="-1">
-      <input type="radio" name="ship" id="ship-crew"  class="ship-radio" value="crew"  checked aria-hidden="true" tabindex="-1">
-      <input type="radio" name="ship" id="ship-star"  class="ship-radio" value="star"  aria-hidden="true" tabindex="-1">
-      <input type="radio" name="ship" id="ship-dream" class="ship-radio" value="dream" aria-hidden="true" tabindex="-1">
+      <input type="checkbox" id="sheet-toggle" class="sheet-toggle__input" aria-hidden="true">
+      <input type="radio" name="ship" id="ship-crew"  class="ship-radio" value="crew"  checked aria-hidden="true">
+      <input type="radio" name="ship" id="ship-star"  class="ship-radio" value="star"  aria-hidden="true">
+      <input type="radio" name="ship" id="ship-dream" class="ship-radio" value="dream" aria-hidden="true">
 
       <div class="travel__map" aria-hidden="true">
         <div class="travel__stars"></div>
@@ -186,12 +230,31 @@
                 stroke-dasharray="6 9" stroke-linecap="round"/>
           <circle cx="85" cy="240" r="3" fill="rgba(255,255,255,0.45)"/>
         </svg>
+
         <div class="travel__planet travel__planet--earth">
-          <div class="planet-css planet-css--earth"></div>
+          <!--
+            Planetas del mapa travel: reemplazan .planet-css CSS-drawn.
+            .travel__planet .planet-css conserva width/height/shadow.
+            .travel__planet--mars .planet-css tiene width:64px desde CSS.
+          -->
+          <img
+            src="/assets/img/earth.png"
+            alt="Tierra"
+            class="planet-css"
+            width="48"
+            height="48"
+          >
           <span class="travel__planet-label">Earth <span aria-hidden="true">›</span></span>
         </div>
+
         <div class="travel__planet travel__planet--mars">
-          <div class="planet-css planet-css--mars"></div>
+          <img
+            src="/assets/img/mars.png"
+            alt="Marte"
+            class="planet-css"
+            width="64"
+            height="64"
+          >
           <span class="travel__planet-label">Mars <span aria-hidden="true">›</span></span>
         </div>
       </div>
@@ -205,20 +268,29 @@
 
       <div class="travel__sheet">
 
-        <label for="sheet-toggle" class="sheet__handle-area" aria-label="Expandir opciones">
-          <div class="sheet__handle"></div>
+        <label for="sheet-toggle" class="sheet__handle-area" aria-label="Expandir opciones de nave">
+          <div class="sheet__handle" aria-hidden="true"></div>
           <p class="sheet__alert">Fares are higher due to space debris</p>
         </label>
 
         <div class="sheet__collapsed">
-          <div class="ship-illustration ship-illustration--crew"
-               role="img" aria-label="Crew Dragon"></div>
+          <!--
+            Nave principal (estado contraído): reemplaza .ship-illustration--crew (CSS-drawn).
+            .ship-illustration conserva width:72px, height:80px, flex-shrink:0.
+          -->
+          <img
+            src="/assets/img/crew-dragon.png"
+            alt="Nave Crew Dragon"
+            class="ship-illustration ship-illustration--crew"
+            width="72"
+            height="80"
+          >
           <div class="ship-detail">
             <div class="ship-detail__header">
               <h2 class="ship-detail__name">Crew Dragon</h2>
               <div class="ship-detail__price">
                 <span class="ship-detail__amount">48.5</span>
-                <div class="ship-detail__token" aria-label="Space token"></div>
+                <div class="ship-detail__token" aria-hidden="true"></div>
               </div>
             </div>
             <p class="ship-detail__meta">Next Launch: 12/03/53, 19:30</p>
@@ -228,51 +300,79 @@
 
         <div class="sheet__expanded">
           <ul class="ships-list" role="list" aria-label="Naves disponibles">
+
             <li class="ship-item">
-              <label for="ship-crew" class="ship-item__label">
-                <div class="ship-mini ship-mini--crew" aria-hidden="true"></div>
+              <label for="ship-crew" class="ship-item__label"
+                     aria-label="Seleccionar Crew Dragon, 48.5, lanzamiento 12/03/53">
+                <!--
+                  Miniaturas de nave (lista expandida): reemplazan .ship-mini CSS-drawn.
+                  .ship-mini conserva 46x46px, border-radius:8px, overflow:hidden.
+                -->
+                <img
+                  src="/assets/img/crew-dragon.png"
+                  alt="Crew Dragon"
+                  class="ship-mini ship-mini--crew"
+                  width="46"
+                  height="46"
+                >
                 <div class="ship-item__info">
                   <h3 class="ship-item__name">Crew Dragon</h3>
                   <p class="ship-item__date">Next Launch: 12/03/53, 19:30</p>
                 </div>
-                <div class="ship-item__price">
+                <div class="ship-item__price" aria-hidden="true">
                   <span>48.5</span>
                   <div class="ship-item__token" aria-hidden="true"></div>
                 </div>
               </label>
             </li>
+
             <li class="ship-item">
-              <label for="ship-star" class="ship-item__label">
-                <div class="ship-mini ship-mini--starliner" aria-hidden="true"></div>
+              <label for="ship-star" class="ship-item__label"
+                     aria-label="Seleccionar Starliner, 51.2, lanzamiento 24/03/53">
+                <img
+                  src="/assets/img/starliner.png"
+                  alt="Starliner"
+                  class="ship-mini ship-mini--starliner"
+                  width="46"
+                  height="46"
+                >
                 <div class="ship-item__info">
                   <h3 class="ship-item__name">Starliner</h3>
                   <p class="ship-item__date">Next Launch: 24/03/53, 12:30</p>
                 </div>
-                <div class="ship-item__price">
+                <div class="ship-item__price" aria-hidden="true">
                   <span>51.2</span>
                   <div class="ship-item__token" aria-hidden="true"></div>
                 </div>
               </label>
             </li>
+
             <li class="ship-item">
-              <label for="ship-dream" class="ship-item__label">
-                <div class="ship-mini ship-mini--dreamchaser" aria-hidden="true"></div>
+              <label for="ship-dream" class="ship-item__label"
+                     aria-label="Seleccionar Dream Chaser, 102.5, lanzamiento 24/03/53">
+                <img
+                  src="/assets/img/dream-chaser.png"
+                  alt="Dream Chaser"
+                  class="ship-mini ship-mini--dreamchaser"
+                  width="46"
+                  height="46"
+                >
                 <div class="ship-item__info">
                   <h3 class="ship-item__name">Dream Chaser</h3>
                   <p class="ship-item__date">Next Launch: 24/03/53, 12:30</p>
                 </div>
-                <div class="ship-item__price">
+                <div class="ship-item__price" aria-hidden="true">
                   <span>102.5</span>
                   <div class="ship-item__token" aria-hidden="true"></div>
                 </div>
               </label>
             </li>
+
           </ul>
         </div>
 
         <div class="sheet__actions">
-          <!-- Connect Wallet → va directo a payments -->
-          <a href="#payments" class="sheet__wallet-btn">
+          <a href="#payments" class="sheet__wallet-btn" aria-label="Conectar wallet para pagar">
             <div class="wallet-icon" aria-hidden="true"></div>
             <span>Connect Wallet</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -280,20 +380,19 @@
               <polyline points="9 18 15 12 9 6"/>
             </svg>
           </a>
-          <!-- Swipe → también navega a payments al confirmar -->
           <div class="swipe-confirm">
-            <label class="swipe-confirm__track" aria-label="Swipe to confirm booking">
+            <label class="swipe-confirm__track" aria-label="Desliza para confirmar reserva">
               <div class="swipe-confirm__arrow" aria-hidden="true">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2.5">
+                     stroke="currentColor" stroke-width="2.5" focusable="false">
                   <polyline points="9 18 15 12 9 6"/>
                 </svg>
               </div>
               <input type="range" min="0" max="100" value="0" step="1"
                      class="swipe-confirm__range"
-                     aria-label="Arrastra para confirmar reserva">
-              <span class="swipe-confirm__text">Swipe To Confirm Your Booking</span>
-              <span class="swipe-confirm__done">
+                     aria-label="Progreso de confirmación">
+              <span class="swipe-confirm__text" aria-hidden="true">Swipe To Confirm Your Booking</span>
+              <span class="swipe-confirm__done" aria-live="polite">
                 <a href="#payments" class="swipe-confirm__done-link">Tap to continue →</a>
               </span>
             </label>
@@ -304,15 +403,10 @@
     </section>
 
     <!-- ===================== PAYMENTS ===================== -->
-    <!--
-      Los radios (#pm-radio-X) están al inicio del <main>, fuera de este section.
-      Eso permite: #pm-radio-1234:checked ~ #payments .pm__confirm-cta { display: flex }
-      usando el selector de hermano general ~ entre el radio y este section.
-    -->
     <section id="payments" class="screen screen--payments">
 
       <header class="pm__header">
-        <a href="#travel" class="pm__back" aria-label="Back">
+        <a href="#travel" class="pm__back" aria-label="Volver a Travel">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <polyline points="15 18 9 12 15 6"/>
@@ -331,15 +425,15 @@
           </svg>
           <input type="search" class="pm__search-input"
                  placeholder="Search payment methods"
-                 autocomplete="off" aria-label="Search payment methods" readonly>
+                 autocomplete="off" aria-label="Buscar métodos de pago (solo visual)"
+                 aria-readonly="true" readonly>
         </div>
 
-        <ul class="pm__list" role="list" aria-label="Payment methods">
+        <ul class="pm__list" role="list" aria-label="Métodos de pago disponibles">
 
-          <!-- Tarjeta 1234 — Default -->
           <li class="pm__item pm__item--has-1234">
             <label for="pm-radio-1234" class="pm__item-row"
-                   role="button" aria-label="Visa ending 1234, default card">
+                   role="button" aria-label="Visa terminada en 1234, predeterminada, vence 12/25">
               <div class="pm__card-logo" aria-hidden="true">
                 <svg viewBox="0 0 38 24" width="28" height="18">
                   <rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
@@ -353,7 +447,7 @@
                 <div class="pm__item-expiry">Expires 12/25</div>
               </div>
               <div class="pm__item-actions">
-                <span class="pm__badge">Default</span>
+                <span class="pm__badge" aria-label="Tarjeta predeterminada">Default</span>
                 <span class="pm__kebab" aria-hidden="true">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                     <circle cx="12" cy="5" r="1.5"/>
@@ -365,10 +459,9 @@
             </label>
           </li>
 
-          <!-- Tarjeta 5678 -->
           <li class="pm__item pm__item--has-5678">
             <label for="pm-radio-5678" class="pm__item-row"
-                   role="button" aria-label="Card ending 5678">
+                   role="button" aria-label="Tarjeta terminada en 5678, vence 01/26">
               <div class="pm__card-logo" aria-hidden="true">
                 <svg viewBox="0 0 38 24" width="28" height="18">
                   <rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
@@ -381,16 +474,16 @@
                 <div class="pm__item-expiry">Expires 01/26</div>
               </div>
               <div class="pm__item-actions">
-                <button class="pm__action-btn pm__action-btn--edit"
-                        aria-label="Edit card 5678" tabindex="-1">
+                <button class="pm__action-btn pm__action-btn--edit" type="button"
+                        aria-label="Editar tarjeta terminada en 5678" tabindex="-1">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                        stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                   </svg>
                 </button>
-                <button class="pm__action-btn pm__action-btn--delete"
-                        aria-label="Delete card 5678" tabindex="-1">
+                <button class="pm__action-btn pm__action-btn--delete" type="button"
+                        aria-label="Eliminar tarjeta terminada en 5678" tabindex="-1">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                        stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <polyline points="3 6 5 6 21 6"/>
@@ -403,10 +496,9 @@
             </label>
           </li>
 
-          <!-- PayPal -->
           <li class="pm__item pm__item--has-pp">
             <label for="pm-radio-pp" class="pm__item-row"
-                   role="button" aria-label="PayPal account">
+                   role="button" aria-label="Cuenta PayPal, user@spacex.com">
               <div class="pm__card-logo" aria-hidden="true">
                 <svg viewBox="0 0 38 24" width="28" height="18">
                   <rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
@@ -421,16 +513,16 @@
                 <div class="pm__item-expiry">user@spacex.com</div>
               </div>
               <div class="pm__item-actions">
-                <button class="pm__action-btn pm__action-btn--edit"
-                        aria-label="Edit PayPal" tabindex="-1">
+                <button class="pm__action-btn pm__action-btn--edit" type="button"
+                        aria-label="Editar cuenta PayPal" tabindex="-1">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                        stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                   </svg>
                 </button>
-                <button class="pm__action-btn pm__action-btn--delete"
-                        aria-label="Delete PayPal" tabindex="-1">
+                <button class="pm__action-btn pm__action-btn--delete" type="button"
+                        aria-label="Eliminar cuenta PayPal" tabindex="-1">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                        stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <polyline points="3 6 5 6 21 6"/>
@@ -447,16 +539,14 @@
       </div><!-- /pm__body -->
 
       <div class="pm__footer">
-        <!-- Confirm & Pay — visible solo cuando hay radio :checked (CSS) -->
-        <a href="#receipt" class="pm__confirm-cta" aria-label="Confirm and pay">
+        <a href="#receipt" class="pm__confirm-cta" aria-label="Confirmar y pagar">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
           Confirm &amp; Pay
         </a>
-        <!-- Add New Method — siempre visible -->
-        <button class="pm__cta" type="button">
+        <button class="pm__cta" type="button" aria-label="Añadir nuevo método de pago">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
                stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <line x1="12" y1="5" x2="12" y2="19"/>
@@ -472,7 +562,7 @@
     <section id="receipt" class="screen screen--receipt">
 
       <header class="rc__header">
-        <a href="#payments" class="rc__back" aria-label="Back">
+        <a href="#payments" class="rc__back" aria-label="Volver a métodos de pago">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
                stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <polyline points="15 18 9 12 15 6"/>
@@ -483,7 +573,7 @@
       </header>
 
       <div class="rc__body">
-        <article class="rc__card" aria-label="Flight receipt">
+        <article class="rc__card" aria-label="Recibo de vuelo Crew Dragon">
 
           <div class="rc__amount-block">
             <div class="rc__amount-icon" aria-hidden="true">
@@ -494,7 +584,7 @@
                 <circle cx="12" cy="11" r="2"/>
               </svg>
             </div>
-            <p class="rc__amount" aria-label="Total $859.50">$859.50</p>
+            <p class="rc__amount" aria-label="Total: 859 dólares con 50 centavos">$859.50</p>
             <p class="rc__merchant">Crew Dragon · UberX Space</p>
             <time class="rc__date" datetime="2024-10-15T08:15">
               15th Oct 2024, 08:15 AM
@@ -505,7 +595,7 @@
 
           <section class="rc__section" aria-labelledby="rc-flight-label">
             <h2 class="rc__section-title" id="rc-flight-label">Flight Details</h2>
-            <div class="rc__route" aria-label="JFK 10:30 AM to LAX 01:45 PM">
+            <div class="rc__route" aria-label="Vuelo de JFK 10:30 AM hacia LAX 01:45 PM">
               <div class="rc__route-point">
                 <div class="rc__route-icon rc__route-icon--depart" aria-hidden="true">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
@@ -560,9 +650,9 @@
             </div>
           </dl>
 
-          <div class="rc__total-row">
+          <div class="rc__total-row" role="group" aria-label="Total a pagar">
             <span class="rc__total-label">Total</span>
-            <span class="rc__total-amount">$859.50</span>
+            <span class="rc__total-amount" aria-label="859 dólares con 50 centavos">$859.50</span>
           </div>
 
           <div class="rc__divider" aria-hidden="true"></div>
@@ -597,8 +687,8 @@
         </article>
       </div><!-- /rc__body -->
 
-      <footer class="rc__footer">
-        <button class="rc__action" type="button" aria-label="Share receipt">
+      <footer class="rc__footer" aria-label="Acciones del recibo">
+        <button class="rc__action" type="button" aria-label="Compartir recibo">
           <span class="rc__action-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
                  stroke="currentColor" stroke-width="1.8">
@@ -612,7 +702,7 @@
           <span class="rc__action-label">Share</span>
         </button>
         <div class="rc__footer-divider" aria-hidden="true"></div>
-        <button class="rc__action" type="button" aria-label="Download receipt">
+        <button class="rc__action" type="button" aria-label="Descargar recibo">
           <span class="rc__action-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
                  stroke="currentColor" stroke-width="1.8">
@@ -624,7 +714,7 @@
           <span class="rc__action-label">Download</span>
         </button>
         <div class="rc__footer-divider" aria-hidden="true"></div>
-        <button class="rc__action" type="button" aria-label="Categorize receipt">
+        <button class="rc__action" type="button" aria-label="Categorizar recibo">
           <span class="rc__action-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
                  stroke="currentColor" stroke-width="1.8">
