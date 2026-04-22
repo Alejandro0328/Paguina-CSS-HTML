@@ -2,7 +2,7 @@
    UBERX × SPACEX | APP.CSS
    ========================================================================== */
 
-/* Fuentes importadas en utils.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Rajdhani:wght@300;600&display=swap');
 
 
 /* ============================================================================
@@ -331,39 +331,18 @@ input {
     gap: 12px;
 }
 
+/* Avatar: ahora es <img>, se eliminan pseudo-elementos CSS-drawn.
+   Se conservan shape, border y shadow. */
 .home__avatar-draw {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #1a3060, #2a5a98);
     border: 2px solid rgba(77, 120, 255, 0.4);
-    position: relative;
     overflow: hidden;
     flex-shrink: 0;
-}
-
-.home__avatar-draw::before {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 28px;
-    height: 22px;
-    background: rgba(77, 120, 255, 0.4);
-    border-radius: 50% 50% 0 0;
-}
-
-.home__avatar-draw::after {
-    content: "";
-    position: absolute;
-    top: 9px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 17px;
-    height: 17px;
-    background: rgba(200, 220, 255, 0.85);
-    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    box-shadow: 0 0 0 3px rgba(77, 120, 255, 0.10);
 }
 
 .home__user-text {
@@ -455,39 +434,15 @@ input {
     margin: 0;
 }
 
-/* Astronauta CSS */
+/* Astronauta: ahora es <img>, se eliminan pseudo-elementos CSS-drawn.
+   .home__banner-figure conserva la animación floatAstronaut. */
 .draw-astronaut {
     width: 54px;
     height: 62px;
-    background: linear-gradient(160deg, #e8eef5, #c8d8e8);
-    border-radius: 40% 40% 28% 28%;
-    position: relative;
+    object-fit: contain;
+    display: block;
     flex-shrink: 0;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-}
-
-.draw-astronaut::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    left: 3px;
-    width: 48px;
-    height: 34px;
-    background: linear-gradient(160deg, #dde8f0, #bccfe0);
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-}
-
-.draw-astronaut::after {
-    content: "";
-    position: absolute;
-    top: -4px;
-    left: 10px;
-    width: 34px;
-    height: 21px;
-    background: linear-gradient(135deg, rgba(77, 120, 255, 0.55), rgba(20, 50, 110, 0.85));
-    border-radius: 8px;
-    border: 1px solid rgba(130, 180, 255, 0.3);
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4));
 }
 
 /* Quick Nav — glass dark, sin blanco */
@@ -601,7 +556,7 @@ input {
     padding: 0 16px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     margin: 0;
 }
 
@@ -614,53 +569,55 @@ input {
     border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: 14px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.22s ease, border-color 0.22s ease,
+        transform 0.22s ease, box-shadow 0.22s ease;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .destination-item:hover {
-    background: rgba(77, 120, 255, 0.08);
-    border-color: rgba(77, 120, 255, 0.22);
+    background: rgba(77, 120, 255, 0.10);
+    border-color: rgba(77, 120, 255, 0.32);
+    transform: translateX(4px);
+    box-shadow: 0 0 0 1px rgba(77, 120, 255, 0.10) inset,
+        0 4px 18px rgba(77, 120, 255, 0.08);
+}
+
+.destination-item:hover .destination-item__arrow {
+    color: #4d78ff;
     transform: translateX(3px);
 }
 
+/* Planetas: ahora son <img>, se eliminan gradientes CSS-drawn.
+   Se conservan shape, shadow y transiciones. */
 .planet-css {
     width: 44px;
     height: 44px;
     border-radius: 50%;
     flex-shrink: 0;
+    object-fit: cover;
+    display: block;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
-.planet-css--earth {
-    background:
-        radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.25) 0%, transparent 40%),
-        radial-gradient(circle at 30% 30%, #4facfe, #00b4d8 40%, #0077b6 100%);
-}
-
-.planet-css--mars {
-    background:
-        radial-gradient(circle at 35% 30%, rgba(255, 200, 150, 0.35) 0%, transparent 40%),
-        radial-gradient(circle at 30% 30%, #ff6b4a, #e05a32 40%, #c0392b 100%);
-}
-
-.planet-css--iss {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-}
-
-.planet-css--iss::after {
-    content: "🛸";
-    font-size: 1.2rem;
-}
-
+/* Los modificadores de color se vacían — la imagen aporta el color */
+.planet-css--earth,
+.planet-css--mars,
+.planet-css--iss,
 .planet-css--moon {
-    background:
-        radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 40%),
-        radial-gradient(circle at 30% 30%, #c8cdd6, #9aa0ad 40%, #6b7280 100%);
+    background: none;
+    border: none;
+    font-size: unset;
+}
+
+/* Limpieza de pseudo-elementos de los modificadores */
+.planet-css--earth::after,
+.planet-css--mars::before,
+.planet-css--iss::before,
+.planet-css--iss::after,
+.planet-css--moon::before {
+    display: none;
 }
 
 .destination-item__info {
@@ -686,8 +643,9 @@ input {
 
 .destination-item__arrow {
     font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.22);
     flex-shrink: 0;
+    transition: color 0.22s ease, transform 0.22s ease;
 }
 
 /* Bottom Nav */
@@ -761,7 +719,10 @@ input {
 .screen--travel {
     padding: 0;
     gap: 0;
-    background: #000008;
+    background:
+        radial-gradient(ellipse 70% 50% at 70% 20%, rgba(8, 18, 55, 0.90) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 20% 75%, rgba(5, 12, 35, 0.75) 0%, transparent 65%),
+        #00000e;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -810,6 +771,7 @@ input {
     inset: 0;
     width: 100%;
     height: 100%;
+    filter: drop-shadow(0 0 4px rgba(77, 120, 255, 0.3));
 }
 
 .travel__planet {
@@ -817,12 +779,29 @@ input {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: rgba(16, 20, 32, 0.78);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.11);
-    border-radius: 14px;
+    background: rgba(10, 14, 28, 0.84);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 16px;
     padding: 8px 14px 8px 8px;
+    cursor: pointer;
+    transition: border-color 0.22s ease, background 0.22s ease,
+        box-shadow 0.22s ease, transform 0.22s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+.travel__planet:hover {
+    border-color: rgba(77, 120, 255, 0.45);
+    background: rgba(12, 18, 42, 0.94);
+    box-shadow: 0 0 0 1px rgba(77, 120, 255, 0.14) inset,
+        0 6px 28px rgba(77, 120, 255, 0.18);
+    transform: translateY(-2px);
+}
+
+.travel__planet:hover .planet-css {
+    transform: scale(1.10);
+    box-shadow: 0 0 30px rgba(77, 120, 255, 0.35);
 }
 
 .travel__planet--earth {
@@ -845,6 +824,7 @@ input {
     width: 48px;
     height: 48px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
 .travel__planet--mars .planet-css {
@@ -897,16 +877,19 @@ input {
     bottom: 0;
     z-index: 20;
     height: 50%;
-    /* contraído: más espacio para el mapa */
-    background: rgba(12, 10, 22, 0.97);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 22px 22px 0 0;
+    background: rgba(6, 8, 20, 0.92);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 26px 26px 0 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     transition: height 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+    box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.55),
+        0 -1px 0 rgba(77, 120, 255, 0.07);
 }
 
 .sheet-toggle__input:checked~.travel__sheet {
@@ -967,46 +950,22 @@ input {
 }
 
 /* Nave — tamaño reducido para que no aplaste */
+/* Nave principal (sheet contraído): ahora es <img>.
+   Se conservan dimensiones y flex-shrink. */
 .ship-illustration {
     width: 72px;
     height: 80px;
-    position: relative;
+    object-fit: contain;
+    display: block;
     flex-shrink: 0;
+    filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.5));
 }
 
+/* Los modificadores ya no pintan la forma — la imagen lo hace */
 .ship-illustration--crew {
-    background: linear-gradient(160deg, #f0f0f0 0%, #d0d5de 50%, #b0b5be 100%);
-    border-radius: 50% 50% 30% 30% / 60% 60% 30% 30%;
-    box-shadow:
-        inset -6px -3px 12px rgba(0, 0, 0, 0.25),
-        inset 3px 6px 10px rgba(255, 255, 255, 0.4),
-        0 6px 24px rgba(0, 0, 0, 0.5);
-}
-
-.ship-illustration--crew::before {
-    content: "";
-    position: absolute;
-    top: 14px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 44px;
-    height: 32px;
-    background: linear-gradient(135deg, rgba(20, 50, 110, 0.9), rgba(8, 18, 55, 0.95));
-    border-radius: 40% 40% 20% 20%;
-    border: 1.5px solid rgba(255, 255, 255, 0.12);
-    box-shadow: inset 0 2px 8px rgba(77, 120, 255, 0.3);
-}
-
-.ship-illustration--crew::after {
-    content: "";
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 28px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.12);
-    border-radius: 3px;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 /* Info de nave */
@@ -1102,18 +1061,21 @@ input {
 }
 
 .ship-item__label:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(77, 120, 255, 0.06);
 }
 
 /* Nave activa — resaltada con acento azul */
 #ship-crew:checked~.travel__sheet .ship-item:nth-child(1) .ship-item__label,
 #ship-star:checked~.travel__sheet .ship-item:nth-child(2) .ship-item__label,
 #ship-dream:checked~.travel__sheet .ship-item:nth-child(3) .ship-item__label {
-    background: rgba(77, 120, 255, 0.08);
+    background: rgba(77, 120, 255, 0.10);
     border-left-color: #4d78ff;
+    box-shadow: inset 3px 0 0 #4d78ff;
 }
 
 /* Miniaturas de naves */
+/* Miniaturas de nave (lista expandida): ahora son <img>.
+   .ship-mini conserva contenedor 46x46px, border-radius, border y overflow. */
 .ship-mini {
     width: 46px;
     height: 46px;
@@ -1121,33 +1083,21 @@ input {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.09);
     flex-shrink: 0;
-    position: relative;
     overflow: hidden;
+    object-fit: cover;
+    display: block;
 }
 
+/* Pseudo-elemento ::after ya no es necesario — la imagen ocupa el espacio */
 .ship-mini::after {
-    content: "";
-    position: absolute;
-    inset: 6px;
-    border-radius: 50% 50% 30% 30% / 60% 60% 30% 30%;
+    display: none;
 }
 
-.ship-mini--crew::after {
-    background: linear-gradient(160deg, #e8ecf2, #b8bdc8);
-    box-shadow: inset -2px -1px 4px rgba(0, 0, 0, 0.3);
-}
-
-.ship-mini--starliner::after {
-    background: linear-gradient(160deg, #d8e8f0, #90b0c8);
-    border-radius: 40%;
-    box-shadow: inset -2px -1px 4px rgba(0, 0, 0, 0.3);
-}
-
-.ship-mini--dreamchaser::after {
-    background: linear-gradient(150deg, #e0e8f8, #8090b8);
-    border-radius: 20% 40% 40% 20%;
-    transform: rotate(-15deg) scale(1.1);
-    box-shadow: inset -2px -1px 4px rgba(0, 0, 0, 0.3);
+/* Los modificadores ya no pintan la cápsula */
+.ship-mini--crew,
+.ship-mini--starliner,
+.ship-mini--dreamchaser {
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .ship-item__info {
@@ -1402,7 +1352,9 @@ input {
 .screen--payments {
     padding: 0;
     gap: 0;
-    background: #0b101e;
+    background:
+        radial-gradient(ellipse 80% 35% at 50% 0%, rgba(10, 18, 50, 0.80) 0%, transparent 60%),
+        #07090f;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -1497,26 +1449,29 @@ input {
 
 .pm__search-input {
     width: 100%;
-    padding: 11px 16px 11px 40px;
+    padding: 12px 16px 12px 42px;
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    color: rgba(255, 255, 255, 0.75);
     font-family: 'DM Sans', system-ui, sans-serif;
     font-size: 0.85rem;
     -webkit-appearance: none;
     appearance: none;
-    transition: border-color 0.2s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .pm__search-input::placeholder {
-    color: rgba(255, 255, 255, 0.28);
+    color: rgba(255, 255, 255, 0.25);
 }
 
 .pm__search-input:focus {
     outline: none;
-    border-color: rgba(77, 120, 255, 0.4);
-    background: rgba(77, 120, 255, 0.04);
+    border-color: rgba(77, 120, 255, 0.45);
+    background: rgba(77, 120, 255, 0.05);
+    box-shadow: 0 0 0 3px rgba(77, 120, 255, 0.10);
 }
 
 /* ── Lista ── */
@@ -1531,28 +1486,37 @@ input {
 
 /* ── Item card ── */
 .pm__item {
-    border-radius: 16px;
+    border-radius: 18px;
     background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease,
+        transform 0.25s ease;
     overflow: hidden;
     cursor: pointer;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .pm__item:hover {
-    border-color: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 
-/* Activo: el radio correspondiente está checked → borde azul */
+/* Activo: el radio correspondiente está checked → borde azul + glow */
 #pm-radio-1234:checked~#payments .pm__item--has-1234,
 #pm-radio-5678:checked~#payments .pm__item--has-5678,
 #pm-radio-pp:checked~#payments .pm__item--has-pp {
-    border-color: rgba(77, 120, 255, 0.5);
-    background: rgba(77, 120, 255, 0.07);
-    box-shadow: 0 0 0 1px rgba(77, 120, 255, 0.12) inset,
-        0 4px 20px rgba(77, 120, 255, 0.1);
+    border-color: rgba(77, 120, 255, 0.55);
+    background: rgba(77, 120, 255, 0.09);
+    box-shadow: 0 0 0 1px rgba(77, 120, 255, 0.15) inset,
+        0 0 28px rgba(77, 120, 255, 0.18),
+        0 6px 24px rgba(0, 0, 0, 0.30);
+    transform: translateY(-1px);
 }
 
 /* ── Fila interna ── */
@@ -1698,9 +1662,9 @@ input {
     gap: 8px;
     width: 100%;
     padding: 15px;
-    border-radius: 14px;
-    background: rgba(77, 120, 255, 0.18);
-    border: 1px solid rgba(77, 120, 255, 0.5);
+    border-radius: 16px;
+    background: rgba(77, 120, 255, 0.20);
+    border: 1px solid rgba(77, 120, 255, 0.55);
     color: #fff;
     font-family: 'Rajdhani', sans-serif;
     font-weight: 600;
@@ -1708,7 +1672,9 @@ input {
     letter-spacing: 2.5px;
     text-transform: uppercase;
     text-decoration: none;
-    box-shadow: 0 0 20px rgba(77, 120, 255, 0.2);
+    box-shadow: 0 0 0 1px rgba(77, 120, 255, 0.12) inset,
+        0 0 24px rgba(77, 120, 255, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
     transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
 }
 
@@ -1721,9 +1687,11 @@ input {
 }
 
 .pm__confirm-cta:hover {
-    background: rgba(77, 120, 255, 0.28);
-    box-shadow: 0 0 32px rgba(77, 120, 255, 0.35);
-    transform: translateY(-1px);
+    background: rgba(77, 120, 255, 0.32);
+    box-shadow: 0 0 0 1px rgba(77, 120, 255, 0.25) inset,
+        0 0 40px rgba(77, 120, 255, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
 }
 
 /* Add New Method */
@@ -1734,23 +1702,27 @@ input {
     gap: 8px;
     width: 100%;
     padding: 15px;
-    border-radius: 14px;
+    border-radius: 16px;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.55);
     font-family: 'Rajdhani', sans-serif;
     font-weight: 600;
     font-size: 0.82rem;
     letter-spacing: 2.5px;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: background 0.25s ease, border-color 0.25s ease,
+        color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .pm__cta:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.20);
     color: #fff;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.20);
 }
 
 
