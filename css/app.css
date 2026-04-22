@@ -331,18 +331,40 @@ input {
     gap: 12px;
 }
 
-/* Avatar: ahora es <img>, se eliminan pseudo-elementos CSS-drawn.
-   Se conservan shape, border y shadow. */
+/* Avatar CSS-drawn */
 .home__avatar-draw {
     width: 44px;
     height: 44px;
     border-radius: 50%;
+    background: linear-gradient(135deg, #1a3060, #2a5a98);
     border: 2px solid rgba(77, 120, 255, 0.4);
+    position: relative;
     overflow: hidden;
     flex-shrink: 0;
-    object-fit: cover;
-    display: block;
-    box-shadow: 0 0 0 3px rgba(77, 120, 255, 0.10);
+}
+
+.home__avatar-draw::before {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 22px;
+    background: rgba(77, 120, 255, 0.4);
+    border-radius: 50% 50% 0 0;
+}
+
+.home__avatar-draw::after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 17px;
+    height: 17px;
+    background: rgba(200, 220, 255, 0.85);
+    border-radius: 50%;
 }
 
 .home__user-text {
@@ -434,15 +456,39 @@ input {
     margin: 0;
 }
 
-/* Astronauta: ahora es <img>, se eliminan pseudo-elementos CSS-drawn.
-   .home__banner-figure conserva la animación floatAstronaut. */
+/* Astronauta CSS-drawn */
 .draw-astronaut {
     width: 54px;
     height: 62px;
-    object-fit: contain;
-    display: block;
+    background: linear-gradient(160deg, #e8eef5, #c8d8e8);
+    border-radius: 40% 40% 28% 28%;
+    position: relative;
     flex-shrink: 0;
-    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4));
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.draw-astronaut::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 3px;
+    width: 48px;
+    height: 34px;
+    background: linear-gradient(160deg, #dde8f0, #bccfe0);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.draw-astronaut::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 10px;
+    width: 34px;
+    height: 21px;
+    background: linear-gradient(135deg, rgba(77, 120, 255, 0.55), rgba(20, 50, 110, 0.85));
+    border-radius: 8px;
+    border: 1px solid rgba(130, 180, 255, 0.3);
 }
 
 /* Quick Nav — glass dark, sin blanco */
@@ -589,8 +635,7 @@ input {
     transform: translateX(3px);
 }
 
-/* Planetas: ahora son <img>, se eliminan gradientes CSS-drawn.
-   Se conservan shape, shadow y transiciones. */
+/* Planetas — img real, conserva forma circular */
 .planet-css {
     width: 44px;
     height: 44px;
@@ -599,25 +644,6 @@ input {
     object-fit: cover;
     display: block;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-}
-
-/* Los modificadores de color se vacían — la imagen aporta el color */
-.planet-css--earth,
-.planet-css--mars,
-.planet-css--iss,
-.planet-css--moon {
-    background: none;
-    border: none;
-    font-size: unset;
-}
-
-/* Limpieza de pseudo-elementos de los modificadores */
-.planet-css--earth::after,
-.planet-css--mars::before,
-.planet-css--iss::before,
-.planet-css--iss::after,
-.planet-css--moon::before {
-    display: none;
 }
 
 .destination-item__info {
@@ -820,6 +846,7 @@ input {
     color: #fff;
 }
 
+/* Planetas del mapa travel — tamaños específicos */
 .travel__planet .planet-css {
     width: 48px;
     height: 48px;
@@ -932,7 +959,6 @@ input {
     flex: 1;
     display: flex;
     flex-direction: row;
-    /* horizontal: nave a la izquierda, info a la derecha */
     align-items: center;
     gap: 18px;
     padding: 8px 24px 6px;
@@ -949,23 +975,47 @@ input {
     overflow: hidden;
 }
 
-/* Nave — tamaño reducido para que no aplaste */
-/* Nave principal (sheet contraído): ahora es <img>.
-   Se conservan dimensiones y flex-shrink. */
+/* Nave ilustración CSS-drawn */
 .ship-illustration {
     width: 72px;
     height: 80px;
-    object-fit: contain;
-    display: block;
+    position: relative;
     flex-shrink: 0;
-    filter: drop-shadow(0 6px 24px rgba(0, 0, 0, 0.5));
 }
 
-/* Los modificadores ya no pintan la forma — la imagen lo hace */
 .ship-illustration--crew {
-    background: none;
-    border-radius: 0;
-    box-shadow: none;
+    background: linear-gradient(160deg, #f0f0f0 0%, #d0d5de 50%, #b0b5be 100%);
+    border-radius: 50% 50% 30% 30% / 60% 60% 30% 30%;
+    box-shadow:
+        inset -6px -3px 12px rgba(0, 0, 0, 0.25),
+        inset 3px 6px 10px rgba(255, 255, 255, 0.4),
+        0 6px 24px rgba(0, 0, 0, 0.5);
+}
+
+.ship-illustration--crew::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 32px;
+    background: linear-gradient(135deg, rgba(20, 50, 110, 0.9), rgba(8, 18, 55, 0.95));
+    border-radius: 40% 40% 20% 20%;
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 2px 8px rgba(77, 120, 255, 0.3);
+}
+
+.ship-illustration--crew::after {
+    content: "";
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
 }
 
 /* Info de nave */
@@ -1073,9 +1123,7 @@ input {
     box-shadow: inset 3px 0 0 #4d78ff;
 }
 
-/* Miniaturas de naves */
-/* Miniaturas de nave (lista expandida): ahora son <img>.
-   .ship-mini conserva contenedor 46x46px, border-radius, border y overflow. */
+/* Miniaturas de naves CSS-drawn */
 .ship-mini {
     width: 46px;
     height: 46px;
@@ -1083,21 +1131,33 @@ input {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.09);
     flex-shrink: 0;
+    position: relative;
     overflow: hidden;
-    object-fit: cover;
-    display: block;
 }
 
-/* Pseudo-elemento ::after ya no es necesario — la imagen ocupa el espacio */
 .ship-mini::after {
-    display: none;
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border-radius: 50% 50% 30% 30% / 60% 60% 30% 30%;
 }
 
-/* Los modificadores ya no pintan la cápsula */
-.ship-mini--crew,
-.ship-mini--starliner,
-.ship-mini--dreamchaser {
-    background: rgba(255, 255, 255, 0.05);
+.ship-mini--crew::after {
+    background: linear-gradient(160deg, #e8ecf2, #b8bdc8);
+    box-shadow: inset -2px -1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ship-mini--starliner::after {
+    background: linear-gradient(160deg, #d8e8f0, #90b0c8);
+    border-radius: 40%;
+    box-shadow: inset -2px -1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ship-mini--dreamchaser::after {
+    background: linear-gradient(150deg, #e0e8f8, #8090b8);
+    border-radius: 20% 40% 40% 20%;
+    transform: rotate(-15deg) scale(1.1);
+    box-shadow: inset -2px -1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .ship-item__info {
