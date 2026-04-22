@@ -9,301 +9,193 @@
 </head>
 
 <body class="app">
-  <!--
-    role="main" es implícito en <main>, pero se declara explícitamente
-    para compatibilidad con AT (assistive technology) más antiguos.
-  -->
-  <main class="app__main" role="main">
+  <main class="app__main">
 
-    <!--
-      RADIOS DE PAYMENTS — fuera de #payments para que el selector CSS ~ funcione.
-      aria-hidden="true" porque son controles de estado CSS, no interacción de usuario.
-    -->
     <input type="radio" name="pm-select" id="pm-radio-1234" class="pm__radio" aria-hidden="true">
     <input type="radio" name="pm-select" id="pm-radio-5678" class="pm__radio" aria-hidden="true">
     <input type="radio" name="pm-select" id="pm-radio-pp"   class="pm__radio" aria-hidden="true">
 
     <!-- ===================== SPLASH ===================== -->
-    <!--
-      aria-label en <section> → los lectores de pantalla anuncian
-      "region, Splash" al navegar por landmarks.
-    -->
-    <section id="splash" class="screen screen--splash screen--active"
-             aria-label="Splash — pantalla de inicio">
-
+    <section id="splash" class="screen screen--splash screen--active">
       <header class="screen__header">
         <h1 class="screen__title">UBERX</h1>
-        <p class="screen__subtitle">Preparing your space ride&hellip;</p>
       </header>
-
-      <div class="screen__line" aria-hidden="true"></div>
-
-      <!--
-        aria-label en <nav> describe la navegación concreta.
-      -->
-      <nav class="screen__nav" aria-label="Inicio de sesión">
+      <div class="screen__line"></div>
+      <nav class="screen__nav">
         <a href="#home" class="button button--primary">Comenzar</a>
       </nav>
-
-      <!--
-        role="status" + aria-live="polite" → el lector anuncia el estado
-        de carga cuando cambia, sin interrumpir al usuario.
-        aria-label describe qué está pasando.
-      -->
-      <div class="screen__loading"
-           role="status"
-           aria-live="polite"
-           aria-label="Cargando…">
-        <div class="loading__dot" aria-hidden="true"></div>
-        <div class="loading__dot loading__dot--delay-1" aria-hidden="true"></div>
-        <div class="loading__dot loading__dot--delay-2" aria-hidden="true"></div>
+      <div class="screen__loading">
+        <div class="loading__dot"></div>
+        <div class="loading__dot loading__dot--delay-1"></div>
+        <div class="loading__dot loading__dot--delay-2"></div>
       </div>
-
     </section>
 
     <!-- ===================== HOME ===================== -->
-    <section id="home" class="screen screen--home"
-             aria-label="Home — destinos y acciones rápidas">
-
+    <section id="home" class="screen screen--home">
       <div class="home__scroll-area">
 
-        <!-- ── Header ── -->
-        <!--
-          <header> dentro de <section> crea un banner landmark
-          solo para esta sección, no para la página completa.
-        -->
         <header class="home__header">
-
           <div class="home__user">
-            <div class="home__avatar-draw"
-                 role="img"
-                 aria-label="Avatar de William Teig">
-            </div>
-
+            <!-- Avatar: div CSS-drawn -->
+            <div class="home__avatar-draw" aria-hidden="true"></div>
             <div class="home__user-text">
-              <!--
-                aria-hidden en el saludo decorativo: el h1 siguiente
-                ya identifica al usuario. Evita redundancia en AT.
-              -->
-              <span class="home__greeting" aria-hidden="true">Good morning</span>
+              <span class="home__greeting">Good morning</span>
               <h1 class="home__username">William Teig</h1>
             </div>
           </div>
-
-          <button class="home__notif-btn"
-                  type="button"
-                  aria-label="Ver notificaciones">
-            <svg width="18" height="18" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="1.8"
-                 aria-hidden="true" focusable="false">
+          <button class="home__notif-btn" type="button" aria-label="Notificaciones">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8" aria-hidden="true">
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
               <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
             </svg>
           </button>
-
         </header>
 
-        <!-- ── Banner ── -->
-        <!--
-          role="region" + aria-labelledby apunta al h2 interno.
-          Permite que AT anuncie "region, Seguridad espacial" al navegar.
-          Corregido: h3 → h2 (h1 es el username, siguiente nivel es h2).
-        -->
-        <div class="home__banner"
-             role="region"
-             aria-labelledby="banner-title">
-
+        <div class="home__banner">
           <div class="home__banner-content">
-            <h2 class="home__banner-title" id="banner-title">
-              Always Wear Your Helmet When Traveling In Space
-            </h2>
-            <!--
-              El <span role="link"> con tabindex="0" es navegable por teclado.
-              aria-label ya describe el destino.
-            -->
-            <span class="home__banner-link"
-                  role="link"
-                  tabindex="0"
-                  aria-label="Más información: About Safe Space Flight">
-              About Safe Space Flight ›
-            </span>
+            <h2 class="home__banner-title">Always Wear Your Helmet When Traveling In Space</h2>
+            <p class="home__banner-link">About Safe Space Flight ›</p>
           </div>
-
-          <div class="home__banner-figure" aria-hidden="true">
-            <div class="draw-astronaut"></div>
+          <div class="home__banner-figure">
+            <!-- Astronauta: div CSS-drawn -->
+            <div class="draw-astronaut" aria-hidden="true"></div>
           </div>
-
         </div>
 
-        <!-- ── Acciones rápidas ── -->
         <nav class="home__quick-nav" aria-label="Acciones rápidas">
-
-          <!--
-            aria-label en cada enlace describe destino + acción.
-            El texto visible "Travel" ya es suficiente en la mayoría de AT,
-            pero el aria-label añade contexto ("Ir a Travel").
-          -->
-          <a href="#travel" class="quick-card" aria-label="Ir a Travel">
+          <a href="#travel" class="quick-card">
             <span class="quick-card__icon" aria-hidden="true">🚀</span>
             <span class="quick-card__label">Travel</span>
           </a>
-
-          <a href="#explore" class="quick-card" aria-label="Ir a Explore">
+          <a href="#explore" class="quick-card">
             <span class="quick-card__icon" aria-hidden="true">🪐</span>
             <span class="quick-card__label">Explore</span>
           </a>
-
-          <a href="#book" class="quick-card" aria-label="Ir a Book">
+          <a href="#book" class="quick-card">
             <span class="quick-card__icon" aria-hidden="true">👨‍🚀</span>
             <span class="quick-card__label">Book</span>
           </a>
-
         </nav>
 
-        <!-- ── Buscador ── -->
         <div class="home__search">
-          <!--
-            El <label for="search-destination"> con clase visually-hidden
-            ya asocia correctamente la etiqueta al input.
-            aria-label en el input es redundante cuando hay label visible
-            o visually-hidden asociado, pero se mantiene como refuerzo.
-          -->
-          <label for="search-destination" class="visually-hidden">
-            Buscar destino
-          </label>
+          <label for="search-destination" class="visually-hidden">Buscar destino</label>
           <div class="home__search-bar">
-
-            <svg class="home__search-icon"
-                 width="15" height="15" viewBox="0 0 24 24"
-                 fill="none" stroke="currentColor" stroke-width="2"
-                 aria-hidden="true" focusable="false">
-              <circle cx="11" cy="11" r="8"/>
-              <path d="m21 21-4.35-4.35"/>
+            <svg class="home__search-icon" width="16" height="16" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
             </svg>
-
-            <input id="search-destination"
-                   class="home__search-input"
-                   type="search"
-                   placeholder="Where to...?"
-                   autocomplete="off"
-                   aria-label="Buscar destino"
-                   aria-autocomplete="list">
-
+            <input id="search-destination" class="home__search-input"
+                   type="search" placeholder="Where to...?" autocomplete="off">
             <div class="home__search-history" aria-hidden="true">
-              <svg width="11" height="11" viewBox="0 0 24 24"
-                   fill="none" stroke="currentColor" stroke-width="2"
-                   focusable="false">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="10"/>
                 <polyline points="12 6 12 12 16 14"/>
               </svg>
               <span>Now</span>
-              <svg width="9" height="9" viewBox="0 0 24 24"
-                   fill="none" stroke="currentColor" stroke-width="2.5"
-                   focusable="false">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5">
                 <polyline points="6 9 12 15 18 9"/>
               </svg>
             </div>
-
           </div>
         </div>
 
-        <!-- ── Lista de destinos ── -->
-        <!--
-          Los <li> de destinos son estáticos (no son botones ni enlaces).
-          Si en el futuro se hacen interactivos, cada <li> necesitará
-          role="button" + tabindex="0" + aria-label.
-        -->
-        <ul class="home__destinations-list"
-            aria-label="Destinos disponibles">
+        <div class="home__destinations-list" role="list" aria-label="Destinos disponibles">
 
-          <li class="destination-item">
-            <div class="planet-css planet-css--earth"
-                 role="img"
-                 aria-label="Planeta Tierra"></div>
+          <a href="#travel" class="destination-item">
+            <!-- PLANETA — img intacta -->
+            <img
+              src="/assets/img/tierra.jpg"
+              alt="Planeta Tierra"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
             <div class="destination-item__info">
-              <h4 class="destination-item__name">Earth</h4>
+              <h3 class="destination-item__name">Earth</h3>
               <p class="destination-item__sub">Solar System, Planet 3</p>
             </div>
             <span class="destination-item__arrow" aria-hidden="true">›</span>
-          </li>
+          </a>
 
-          <li class="destination-item">
-            <div class="planet-css planet-css--mars"
-                 role="img"
-                 aria-label="Planeta Marte"></div>
+          <a href="#travel" class="destination-item">
+            <!-- PLANETA — img intacta -->
+            <img
+              src="/assets/img/marte.jpeg"
+              alt="Planeta Marte"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
             <div class="destination-item__info">
-              <h4 class="destination-item__name">Mars</h4>
+              <h3 class="destination-item__name">Mars</h3>
               <p class="destination-item__sub">Solar System, Planet 4</p>
             </div>
             <span class="destination-item__arrow" aria-hidden="true">›</span>
-          </li>
+          </a>
 
-          <li class="destination-item">
-            <div class="planet-css planet-css--iss"
-                 role="img"
-                 aria-label="Estación Espacial Internacional"></div>
+          <a href="#travel" class="destination-item">
+            <!-- PLANETA — img intacta -->
+            <img
+              src="/assets/img/station.jpeg"
+              alt="Estación Espacial Internacional"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
             <div class="destination-item__info">
-              <h4 class="destination-item__name">International Space Station</h4>
+              <h3 class="destination-item__name">International Space Station</h3>
               <p class="destination-item__sub">Low Earth Orbit</p>
             </div>
             <span class="destination-item__arrow" aria-hidden="true">›</span>
-          </li>
+          </a>
 
-          <li class="destination-item">
-            <div class="planet-css planet-css--moon"
-                 role="img"
-                 aria-label="La Luna"></div>
+          <a href="#travel" class="destination-item">
+            <!-- PLANETA — img intacta -->
+            <img
+              src="/assets/img/luna.jpg"
+              alt="La Luna"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
             <div class="destination-item__info">
-              <h4 class="destination-item__name">Moon</h4>
+              <h3 class="destination-item__name">Moon</h3>
               <p class="destination-item__sub">Earth's Natural Satellite</p>
             </div>
             <span class="destination-item__arrow" aria-hidden="true">›</span>
-          </li>
+          </a>
 
-        </ul>
+        </div><!-- /home__destinations-list -->
 
       </div><!-- /home__scroll-area -->
 
-      <!-- ── Bottom Nav ── -->
-      <!--
-        aria-current="page" en el ítem activo → AT anuncia "página actual".
-        El CSS ya usa este atributo para aplicar color de acento.
-      -->
       <nav class="home__bottom-nav" aria-label="Navegación principal">
-
         <a href="#home" class="bottom-nav__item" aria-current="page">
-          <svg width="20" height="20" viewBox="0 0 24 24"
-               fill="currentColor" aria-hidden="true" focusable="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
           </svg>
           <span>Home</span>
         </a>
-
         <div class="bottom-nav__divider" aria-hidden="true"></div>
-
         <a href="#journeys" class="bottom-nav__item">
-          <svg width="20" height="20" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="1.8"
-               aria-hidden="true" focusable="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8" aria-hidden="true">
             <circle cx="12" cy="12" r="10"/>
             <line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10
-                     15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
           </svg>
           <span>Journeys</span>
         </a>
-
       </nav>
-
-    </section><!-- /#home -->
+    </section>
 
     <!-- ===================== TRAVEL ===================== -->
-    <section id="travel" class="screen screen--travel"
-             aria-label="Travel — selección de nave y confirmación">
+    <section id="travel" class="screen screen--travel">
 
-      <!--
-        Controles CSS ocultos: aria-hidden impide que AT los anuncie.
-      -->
       <input type="checkbox" id="sheet-toggle" class="sheet-toggle__input" aria-hidden="true">
       <input type="radio" name="ship" id="ship-crew"  class="ship-radio" value="crew"  checked aria-hidden="true">
       <input type="radio" name="ship" id="ship-star"  class="ship-radio" value="star"  aria-hidden="true">
@@ -312,56 +204,60 @@
       <div class="travel__map" aria-hidden="true">
         <div class="travel__stars"></div>
         <svg class="travel__route-svg" viewBox="0 0 320 300" fill="none"
-             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+             xmlns="http://www.w3.org/2000/svg">
           <path d="M 85 240 Q 180 60 235 100"
                 stroke="rgba(255,255,255,0.3)" stroke-width="1.5"
                 stroke-dasharray="6 9" stroke-linecap="round"/>
           <circle cx="85" cy="240" r="3" fill="rgba(255,255,255,0.45)"/>
         </svg>
+
         <div class="travel__planet travel__planet--earth">
-          <div class="planet-css planet-css--earth"></div>
+          <!-- PLANETA — img intacta -->
+          <img
+            src="/assets/img/tierra.jpg"
+            alt="Tierra"
+            class="planet-css"
+            width="48"
+            height="48"
+          >
           <span class="travel__planet-label">Earth <span aria-hidden="true">›</span></span>
         </div>
+
         <div class="travel__planet travel__planet--mars">
-          <div class="planet-css planet-css--mars"></div>
+          <!-- PLANETA — img intacta -->
+          <img
+            src="/assets/img/marte.jpeg"
+            alt="Marte"
+            class="planet-css"
+            width="64"
+            height="64"
+          >
           <span class="travel__planet-label">Mars <span aria-hidden="true">›</span></span>
         </div>
       </div>
 
       <a href="#home" class="travel__back-btn" aria-label="Volver a Home">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-             stroke="currentColor" stroke-width="2.5"
-             aria-hidden="true" focusable="false">
+             stroke="currentColor" stroke-width="2.5" aria-hidden="true">
           <polyline points="15 18 9 12 15 6"/>
         </svg>
       </a>
 
       <div class="travel__sheet">
 
-        <!--
-          El label actúa como toggle del checkbox CSS.
-          aria-label describe la acción al lector de pantalla.
-        -->
-        <label for="sheet-toggle" class="sheet__handle-area"
-               aria-label="Expandir u ocultar opciones de nave">
+        <label for="sheet-toggle" class="sheet__handle-area" aria-label="Expandir opciones de nave">
           <div class="sheet__handle" aria-hidden="true"></div>
           <p class="sheet__alert">Fares are higher due to space debris</p>
         </label>
 
-        <!-- Estado contraído -->
         <div class="sheet__collapsed">
-          <div class="ship-illustration ship-illustration--crew"
-               role="img"
-               aria-label="Ilustración de la nave Crew Dragon"></div>
+          <!-- Nave principal: div CSS-drawn -->
+          <div class="ship-illustration ship-illustration--crew" aria-hidden="true"></div>
           <div class="ship-detail">
             <div class="ship-detail__header">
               <h2 class="ship-detail__name">Crew Dragon</h2>
               <div class="ship-detail__price">
                 <span class="ship-detail__amount">48.5</span>
-                <!--
-                  Token decorativo: aria-hidden evita que AT lo lea
-                  como elemento sin significado textual.
-                -->
                 <div class="ship-detail__token" aria-hidden="true"></div>
               </div>
             </div>
@@ -370,13 +266,13 @@
           </div>
         </div>
 
-        <!-- Estado expandido -->
         <div class="sheet__expanded">
           <ul class="ships-list" role="list" aria-label="Naves disponibles">
 
             <li class="ship-item">
               <label for="ship-crew" class="ship-item__label"
-                     aria-label="Seleccionar Crew Dragon, precio 48.5, próximo lanzamiento 12/03/53">
+                     aria-label="Seleccionar Crew Dragon, 48.5, lanzamiento 12/03/53">
+                <!-- Miniatura nave: div CSS-drawn -->
                 <div class="ship-mini ship-mini--crew" aria-hidden="true"></div>
                 <div class="ship-item__info">
                   <h3 class="ship-item__name">Crew Dragon</h3>
@@ -391,7 +287,8 @@
 
             <li class="ship-item">
               <label for="ship-star" class="ship-item__label"
-                     aria-label="Seleccionar Starliner, precio 51.2, próximo lanzamiento 24/03/53">
+                     aria-label="Seleccionar Starliner, 51.2, lanzamiento 24/03/53">
+                <!-- Miniatura nave: div CSS-drawn -->
                 <div class="ship-mini ship-mini--starliner" aria-hidden="true"></div>
                 <div class="ship-item__info">
                   <h3 class="ship-item__name">Starliner</h3>
@@ -406,7 +303,8 @@
 
             <li class="ship-item">
               <label for="ship-dream" class="ship-item__label"
-                     aria-label="Seleccionar Dream Chaser, precio 102.5, próximo lanzamiento 24/03/53">
+                     aria-label="Seleccionar Dream Chaser, 102.5, lanzamiento 24/03/53">
+                <!-- Miniatura nave: div CSS-drawn -->
                 <div class="ship-mini ship-mini--dreamchaser" aria-hidden="true"></div>
                 <div class="ship-item__info">
                   <h3 class="ship-item__name">Dream Chaser</h3>
@@ -423,57 +321,43 @@
         </div>
 
         <div class="sheet__actions">
-
-          <a href="#payments" class="sheet__wallet-btn"
-             aria-label="Conectar wallet para pagar">
+          <a href="#payments" class="sheet__wallet-btn" aria-label="Conectar wallet para pagar">
             <div class="wallet-icon" aria-hidden="true"></div>
             <span>Connect Wallet</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2"
-                 aria-hidden="true" focusable="false">
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
               <polyline points="9 18 15 12 9 6"/>
             </svg>
           </a>
-
           <div class="swipe-confirm">
-            <!--
-              El input[type=range] tiene su propio aria-label.
-              El <label> envolvente usa aria-label para describir
-              la acción completa al contexto del control.
-            -->
-            <label class="swipe-confirm__track"
-                   aria-label="Desliza para confirmar tu reserva">
+            <label class="swipe-confirm__track" aria-label="Desliza para confirmar reserva">
               <div class="swipe-confirm__arrow" aria-hidden="true">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                     stroke="currentColor" stroke-width="2.5"
-                     focusable="false">
+                     stroke="currentColor" stroke-width="2.5" focusable="false">
                   <polyline points="9 18 15 12 9 6"/>
                 </svg>
               </div>
               <input type="range" min="0" max="100" value="0" step="1"
                      class="swipe-confirm__range"
-                     aria-label="Progreso de confirmación de reserva">
+                     aria-label="Progreso de confirmación">
               <span class="swipe-confirm__text" aria-hidden="true">Swipe To Confirm Your Booking</span>
               <span class="swipe-confirm__done" aria-live="polite">
                 <a href="#payments" class="swipe-confirm__done-link">Tap to continue →</a>
               </span>
             </label>
           </div>
-
         </div>
 
       </div><!-- /travel__sheet -->
     </section>
 
     <!-- ===================== PAYMENTS ===================== -->
-    <section id="payments" class="screen screen--payments"
-             aria-label="Métodos de pago">
+    <section id="payments" class="screen screen--payments">
 
       <header class="pm__header">
         <a href="#travel" class="pm__back" aria-label="Volver a Travel">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.5"
-               aria-hidden="true" focusable="false">
+               stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <polyline points="15 18 9 12 15 6"/>
           </svg>
         </a>
@@ -485,31 +369,22 @@
 
         <div class="pm__search-wrap">
           <svg class="pm__search-icon" width="15" height="15" viewBox="0 0 24 24"
-               fill="none" stroke="currentColor" stroke-width="2"
-               aria-hidden="true" focusable="false">
+               fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
           </svg>
-          <!--
-            readonly + aria-readonly="true" → AT comunica que el campo
-            no acepta escritura (campo de filtro visual, no funcional).
-          -->
           <input type="search" class="pm__search-input"
                  placeholder="Search payment methods"
-                 autocomplete="off"
-                 aria-label="Buscar métodos de pago (solo visual)"
-                 aria-readonly="true"
-                 readonly>
+                 autocomplete="off" aria-label="Buscar métodos de pago (solo visual)"
+                 aria-readonly="true" readonly>
         </div>
 
         <ul class="pm__list" role="list" aria-label="Métodos de pago disponibles">
 
-          <!-- Tarjeta 1234 — Default -->
           <li class="pm__item pm__item--has-1234">
             <label for="pm-radio-1234" class="pm__item-row"
-                   role="button"
-                   aria-label="Visa terminada en 1234, tarjeta predeterminada, vence 12/25">
+                   role="button" aria-label="Visa terminada en 1234, predeterminada, vence 12/25">
               <div class="pm__card-logo" aria-hidden="true">
-                <svg viewBox="0 0 38 24" width="28" height="18" focusable="false">
+                <svg viewBox="0 0 38 24" width="28" height="18">
                   <rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
                   <circle cx="15" cy="12" r="7" fill="rgba(255,80,80,0.75)"/>
                   <circle cx="23" cy="12" r="7" fill="rgba(255,160,0,0.65)"
@@ -521,14 +396,9 @@
                 <div class="pm__item-expiry">Expires 12/25</div>
               </div>
               <div class="pm__item-actions">
-                <!--
-                  aria-label en el badge describe el estado semántico
-                  al lector, no solo visualmente.
-                -->
                 <span class="pm__badge" aria-label="Tarjeta predeterminada">Default</span>
                 <span class="pm__kebab" aria-hidden="true">
-                  <svg width="16" height="16" viewBox="0 0 24 24"
-                       fill="currentColor" focusable="false">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                     <circle cx="12" cy="5" r="1.5"/>
                     <circle cx="12" cy="12" r="1.5"/>
                     <circle cx="12" cy="19" r="1.5"/>
@@ -538,13 +408,11 @@
             </label>
           </li>
 
-          <!-- Tarjeta 5678 -->
           <li class="pm__item pm__item--has-5678">
             <label for="pm-radio-5678" class="pm__item-row"
-                   role="button"
-                   aria-label="Tarjeta terminada en 5678, vence 01/26">
+                   role="button" aria-label="Tarjeta terminada en 5678, vence 01/26">
               <div class="pm__card-logo" aria-hidden="true">
-                <svg viewBox="0 0 38 24" width="28" height="18" focusable="false">
+                <svg viewBox="0 0 38 24" width="28" height="18">
                   <rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
                   <rect x="6" y="7" width="10" height="10" rx="2" fill="rgba(100,180,255,0.6)"/>
                   <rect x="8" y="9" width="6" height="6" rx="1" fill="rgba(180,220,255,0.35)"/>
@@ -555,22 +423,18 @@
                 <div class="pm__item-expiry">Expires 01/26</div>
               </div>
               <div class="pm__item-actions">
-                <button class="pm__action-btn pm__action-btn--edit"
-                        aria-label="Editar tarjeta terminada en 5678"
-                        tabindex="-1" type="button">
+                <button class="pm__action-btn pm__action-btn--edit" type="button"
+                        aria-label="Editar tarjeta terminada en 5678" tabindex="-1">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2"
-                       aria-hidden="true" focusable="false">
+                       stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                   </svg>
                 </button>
-                <button class="pm__action-btn pm__action-btn--delete"
-                        aria-label="Eliminar tarjeta terminada en 5678"
-                        tabindex="-1" type="button">
+                <button class="pm__action-btn pm__action-btn--delete" type="button"
+                        aria-label="Eliminar tarjeta terminada en 5678" tabindex="-1">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2"
-                       aria-hidden="true" focusable="false">
+                       stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <polyline points="3 6 5 6 21 6"/>
                     <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
                     <path d="M10 11v6M14 11v6"/>
@@ -581,13 +445,11 @@
             </label>
           </li>
 
-          <!-- PayPal -->
           <li class="pm__item pm__item--has-pp">
             <label for="pm-radio-pp" class="pm__item-row"
-                   role="button"
-                   aria-label="Cuenta PayPal, user@spacex.com">
+                   role="button" aria-label="Cuenta PayPal, user@spacex.com">
               <div class="pm__card-logo" aria-hidden="true">
-                <svg viewBox="0 0 38 24" width="28" height="18" focusable="false">
+                <svg viewBox="0 0 38 24" width="28" height="18">
                   <rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
                   <text x="5" y="17" font-size="11" font-weight="800"
                         font-family="sans-serif" fill="#009cde">Pay</text>
@@ -600,22 +462,18 @@
                 <div class="pm__item-expiry">user@spacex.com</div>
               </div>
               <div class="pm__item-actions">
-                <button class="pm__action-btn pm__action-btn--edit"
-                        aria-label="Editar cuenta PayPal"
-                        tabindex="-1" type="button">
+                <button class="pm__action-btn pm__action-btn--edit" type="button"
+                        aria-label="Editar cuenta PayPal" tabindex="-1">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2"
-                       aria-hidden="true" focusable="false">
+                       stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
                     <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
                   </svg>
                 </button>
-                <button class="pm__action-btn pm__action-btn--delete"
-                        aria-label="Eliminar cuenta PayPal"
-                        tabindex="-1" type="button">
+                <button class="pm__action-btn pm__action-btn--delete" type="button"
+                        aria-label="Eliminar cuenta PayPal" tabindex="-1">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2"
-                       aria-hidden="true" focusable="false">
+                       stroke="currentColor" stroke-width="2" aria-hidden="true">
                     <polyline points="3 6 5 6 21 6"/>
                     <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
                     <path d="M10 11v6M14 11v6"/>
@@ -630,20 +488,16 @@
       </div><!-- /pm__body -->
 
       <div class="pm__footer">
-        <a href="#receipt" class="pm__confirm-cta"
-           aria-label="Confirmar y pagar">
+        <a href="#receipt" class="pm__confirm-cta" aria-label="Confirmar y pagar">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.5"
-               aria-hidden="true" focusable="false">
+               stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
           Confirm &amp; Pay
         </a>
-        <button class="pm__cta" type="button"
-                aria-label="Añadir nuevo método de pago">
+        <button class="pm__cta" type="button" aria-label="Añadir nuevo método de pago">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.5"
-               aria-hidden="true" focusable="false">
+               stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <line x1="12" y1="5" x2="12" y2="19"/>
             <line x1="5" y1="12" x2="19" y2="12"/>
           </svg>
@@ -654,14 +508,12 @@
     </section>
 
     <!-- ===================== RECEIPT ===================== -->
-    <section id="receipt" class="screen screen--receipt"
-             aria-label="Recibo de pago">
+    <section id="receipt" class="screen screen--receipt">
 
       <header class="rc__header">
-        <a href="#payments" class="rc__back" aria-label="Volver a Métodos de pago">
+        <a href="#payments" class="rc__back" aria-label="Volver a métodos de pago">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.5"
-               aria-hidden="true" focusable="false">
+               stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <polyline points="15 18 9 12 15 6"/>
           </svg>
         </a>
@@ -675,16 +527,12 @@
           <div class="rc__amount-block">
             <div class="rc__amount-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="none"
-                   stroke="currentColor" stroke-width="1.8" focusable="false">
+                   stroke="currentColor" stroke-width="1.8">
                 <path d="M4.5 16.5c-1.5 1.5-1 5.5 0 5.5s4-0.5 5.5-2"/>
                 <path d="M12 2s4 2 4 9c0 4-2 7-4 8-2-1-4-4-4-8 0-7 4-9 4-9z"/>
                 <circle cx="12" cy="11" r="2"/>
               </svg>
             </div>
-            <!--
-              aria-label en el importe enuncia el monto completo
-              en lugar de "$859.50" que algunos AT leen como "dólar 859 punto 50".
-            -->
             <p class="rc__amount" aria-label="Total: 859 dólares con 50 centavos">$859.50</p>
             <p class="rc__merchant">Crew Dragon · UberX Space</p>
             <time class="rc__date" datetime="2024-10-15T08:15">
@@ -696,11 +544,10 @@
 
           <section class="rc__section" aria-labelledby="rc-flight-label">
             <h2 class="rc__section-title" id="rc-flight-label">Flight Details</h2>
-            <div class="rc__route" aria-label="Vuelo de JFK a las 10:30 AM hacia LAX a las 01:45 PM">
+            <div class="rc__route" aria-label="Vuelo de JFK 10:30 AM hacia LAX 01:45 PM">
               <div class="rc__route-point">
                 <div class="rc__route-icon rc__route-icon--depart" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="16" height="16"
-                       fill="currentColor" focusable="false">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                     <path d="M2.5 19h19v2h-19zm7.18-1.73l4.35 1.16 5.31 1.42c.8.21 1.62-.26 1.84-1.06.21-.8-.26-1.62-1.06-1.84l-3.62-.97-2.97-5.13-1.45-.39v4.11l-4.27-1.14-.92-2.53-1.45-.39v3.83l1.85.5 2.39.64z"/>
                   </svg>
                 </div>
@@ -710,7 +557,7 @@
                 </div>
               </div>
               <div class="rc__route-line" aria-hidden="true">
-                <svg viewBox="0 0 80 16" width="60" height="14" focusable="false">
+                <svg viewBox="0 0 80 16" width="60" height="14">
                   <line x1="0" y1="8" x2="66" y2="8"
                         stroke="rgba(77,120,255,0.35)" stroke-width="1.2"
                         stroke-dasharray="4 3"/>
@@ -719,8 +566,7 @@
               </div>
               <div class="rc__route-point rc__route-point--right">
                 <div class="rc__route-icon rc__route-icon--arrive" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="16" height="16"
-                       fill="currentColor" focusable="false">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                     <path d="M2.5 19h19v2h-19zm16.84-3.18c.8.21 1.62-.26 1.84-1.06.21-.8-.26-1.62-1.06-1.84l-3.62-.97-2.97-5.13-1.45-.39v4.11l-4.27-1.14-.92-2.53-1.45-.39v3.83l1.85.5 11.05 2.97v.03z"/>
                   </svg>
                 </div>
@@ -753,10 +599,6 @@
             </div>
           </dl>
 
-          <!--
-            role="group" + aria-label agrupa el total como unidad semántica
-            independiente, fácil de localizar por AT.
-          -->
           <div class="rc__total-row" role="group" aria-label="Total a pagar">
             <span class="rc__total-label">Total</span>
             <span class="rc__total-amount" aria-label="859 dólares con 50 centavos">$859.50</span>
@@ -768,8 +610,7 @@
             <div class="rc__field">
               <dt class="rc__field-label rc__field-label--with-icon">
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none"
-                     stroke="currentColor" stroke-width="1.8"
-                     aria-hidden="true" focusable="false">
+                     stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                   <rect x="1" y="4" width="22" height="16" rx="2"/>
                   <line x1="1" y1="10" x2="23" y2="10"/>
                 </svg>
@@ -780,8 +621,7 @@
             <div class="rc__field">
               <dt class="rc__field-label rc__field-label--with-icon">
                 <svg viewBox="0 0 24 24" width="13" height="13" fill="none"
-                     stroke="currentColor" stroke-width="1.8"
-                     aria-hidden="true" focusable="false">
+                     stroke="currentColor" stroke-width="1.8" aria-hidden="true">
                   <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
                   <line x1="7" y1="7" x2="7.01" y2="7"/>
                 </svg>
@@ -800,7 +640,7 @@
         <button class="rc__action" type="button" aria-label="Compartir recibo">
           <span class="rc__action-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
-                 stroke="currentColor" stroke-width="1.8" focusable="false">
+                 stroke="currentColor" stroke-width="1.8">
               <circle cx="18" cy="5" r="3"/>
               <circle cx="6" cy="12" r="3"/>
               <circle cx="18" cy="19" r="3"/>
@@ -814,7 +654,7 @@
         <button class="rc__action" type="button" aria-label="Descargar recibo">
           <span class="rc__action-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
-                 stroke="currentColor" stroke-width="1.8" focusable="false">
+                 stroke="currentColor" stroke-width="1.8">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
               <polyline points="7 10 12 15 17 10"/>
               <line x1="12" y1="15" x2="12" y2="3"/>
@@ -826,9 +666,9 @@
         <button class="rc__action" type="button" aria-label="Categorizar recibo">
           <span class="rc__action-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
-                 stroke="currentColor" stroke-width="1.8" focusable="false">
+                 stroke="currentColor" stroke-width="1.8">
               <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>http://127.0.0.1:3000/index.html?vscode-livepreview=true#travel
             </svg>
           </span>
           <span class="rc__action-label">Categorize</span>
