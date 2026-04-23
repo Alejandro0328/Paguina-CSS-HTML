@@ -4,7 +4,6 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
 ![BEM](https://img.shields.io/badge/BEM-Methodology-black?style=flat-square)
 ![Sin JavaScript](https://img.shields.io/badge/JavaScript-0%25-lightgrey?style=flat-square)
-![Estado](https://img.shields.io/badge/Estado-En%20desarrollo-yellow?style=flat-square)
 
 Aplicación web frontend de concepto que simula una plataforma de reservas de viajes espaciales al estilo Uber. Desarrollada íntegramente con **HTML5 y CSS3 puro**, sin ninguna dependencia de JavaScript ni librerías externas.
 
@@ -12,7 +11,7 @@ Aplicación web frontend de concepto que simula una plataforma de reservas de vi
 
 ## 🌐 Vista previa
 
-> 🔗 [Ver demo en GitHub Pages](#) ← *(reemplaza con tu URL)*
+> 🔗 [Ver demo en GitHub Pages](https://alejandro0328.github.io/Paguina-CSS-HTML/) 
 
 ---
 
@@ -174,7 +173,7 @@ Se utilizan etiquetas semánticas donde corresponde: `<header>`, `<nav>`, `<sect
 ## 🚦 Estado del proyecto
 
 ```
-🟡 En desarrollo — Versión de concepto / UI prototype
+Versión de concepto / UI prototype
 ```
 
 - [x] Pantalla Splash
@@ -182,10 +181,7 @@ Se utilizan etiquetas semánticas donde corresponde: `<header>`, `<nav>`, `<sect
 - [x] Pantalla Travel (selector de naves)
 - [x] Pantalla Payments
 - [x] Pantalla Receipt
-- [ ] Animaciones de transición entre pantallas
-- [ ] Modo oscuro / claro
-- [ ] Pantalla Journeys
-- [ ] Pantalla Explore
+
 
 ---
 
