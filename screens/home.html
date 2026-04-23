@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Inicio — UBERX</title>
+</head>
+<body>
+
+    <section id="home" class="screen screen--home">
+      <div class="home__scroll-area">
+
+        <header class="home__header">
+          <div class="home__user">
+            <!-- Avatar: div CSS-drawn -->
+            <div class="home__avatar-draw" aria-hidden="true"></div>
+            <div class="home__user-text">
+              <span class="home__greeting">Buenos días</span>
+              <h1 class="home__username">William Teig</h1>
+            </div>
+          </div>
+          <button class="home__notif-btn" type="button" aria-label="Notificaciones">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+          </button>
+        </header>
+
+        <div class="home__banner">
+          <div class="home__banner-content">
+            <h2 class="home__banner-title">Usa siempre tu casco al viajar por el espacio</h2>
+            <p class="home__banner-link">Acerca del vuelo espacial seguro ›</p>
+          </div>
+          <div class="home__banner-figure">
+            <!-- Astronauta: div CSS-drawn -->
+            <div class="draw-astronaut" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <nav class="home__quick-nav" aria-label="Acciones rápidas">
+          <a href="#travel" class="quick-card">
+            <span class="quick-card__icon" aria-hidden="true">🚀</span>
+            <span class="quick-card__label">Viajar</span>
+          </a>
+          <a href="#explore" class="quick-card">
+            <span class="quick-card__icon" aria-hidden="true">🪐</span>
+            <span class="quick-card__label">Explorar</span>
+          </a>
+          <a href="#book" class="quick-card">
+            <span class="quick-card__icon" aria-hidden="true">👨‍🚀</span>
+            <span class="quick-card__label">Reservar</span>
+          </a>
+        </nav>
+
+        <div class="home__search">
+          <label for="search-destination" class="visually-hidden">Buscar destino</label>
+          <div class="home__search-bar">
+            <svg class="home__search-icon" width="16" height="16" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+            </svg>
+            <input id="search-destination" class="home__search-input"
+                   type="search" placeholder="¿A dónde vas?" autocomplete="off">
+            <div class="home__search-history" aria-hidden="true">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span>Ahora</span>
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="home__destinations-list" role="list" aria-label="Destinos disponibles">
+
+          <a href="#travel" class="destination-item">
+            <!-- PLANETA — img intacta -->
+            <img
+              src="/assets/img/tierra.jpg"
+              alt="Planeta Tierra"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
+            <div class="destination-item__info">
+              <h3 class="destination-item__name">Tierra</h3>
+              <p class="destination-item__sub">Sistema Solar, Planeta 3</p>
+            </div>
+            <span class="destination-item__arrow" aria-hidden="true">›</span>
+          </a>
+
+          <a href="#travel" class="destination-item">
+            <!-- PLANETA — img intacta -->
+            <img
+              src="/assets/img/marte.jpeg"
+              alt="Planeta Marte"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
+            <div class="destination-item__info">
+              <h3 class="destination-item__name">Marte</h3>
+              <p class="destination-item__sub">Sistema Solar, Planeta 4</p>
+            </div>
+            <span class="destination-item__arrow" aria-hidden="true">›</span>
+          </a>
+
+          <a href="#travel" class="destination-item">
+            <!-- PLANETA — img intacta -->
+            <img
+              src="/assets/img/station.jpeg"
+              alt="Estación Espacial Internacional"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
+            <div class="destination-item__info">
+              <h3 class="destination-item__name">Estación Espacial Internacional</h3>
+              <p class="destination-item__sub">Órbita Terrestre Baja</p>
+            </div>
+            <span class="destination-item__arrow" aria-hidden="true">›</span>
+          </a>
+
+          <a href="#travel" class="destination-item">
+            <!-- PLANETA — img intacta -->
+            <img
+              src="/assets/img/luna.jpg"
+              alt="La Luna"
+              class="planet-css"
+              width="44"
+              height="44"
+            >
+            <div class="destination-item__info">
+              <h3 class="destination-item__name">Luna</h3>
+              <p class="destination-item__sub">Satélite Natural de la Tierra</p>
+            </div>
+            <span class="destination-item__arrow" aria-hidden="true">›</span>
+          </a>
+
+        </div><!-- /home__destinations-list -->
+
+      </div><!-- /home__scroll-area -->
+
+      <nav class="home__bottom-nav" aria-label="Navegación principal">
+        <a href="#home" class="bottom-nav__item" aria-current="page">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+          </svg>
+          <span>Inicio</span>
+        </a>
+        <div class="bottom-nav__divider" aria-hidden="true"></div>
+        <a href="#journeys" class="bottom-nav__item">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span>Viajes</span>
+        </a>
+      </nav>
+    </section>
+
+</body>
+</html>

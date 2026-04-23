@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Recibo — UBERX</title>
+</head>
+<body>
+
+    <section id="receipt" class="screen screen--receipt">
+
+      <header class="rc__header">
+        <a href="#payments" class="rc__back" aria-label="Volver a métodos de pago">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </a>
+        <h1 class="rc__title">Recibo</h1>
+        <div class="rc__header-spacer" aria-hidden="true"></div>
+      </header>
+
+      <div class="rc__body">
+        <article class="rc__card" aria-label="Recibo de vuelo Crew Dragon">
+
+          <div class="rc__amount-block">
+            <div class="rc__amount-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none"
+                   stroke="currentColor" stroke-width="1.8">
+                <path d="M4.5 16.5c-1.5 1.5-1 5.5 0 5.5s4-0.5 5.5-2"/>
+                <path d="M12 2s4 2 4 9c0 4-2 7-4 8-2-1-4-4-4-8 0-7 4-9 4-9z"/>
+                <circle cx="12" cy="11" r="2"/>
+              </svg>
+            </div>
+            <p class="rc__amount" aria-label="Total: 859 dólares con 50 centavos">$859.50</p>
+            <p class="rc__merchant">Crew Dragon · UberX Space</p>
+            <time class="rc__date" datetime="2024-10-15T08:15">
+              15 oct. 2024, 08:15 a.m.
+            </time>
+          </div>
+
+          <div class="rc__divider rc__divider--dashed" aria-hidden="true"></div>
+
+          <section class="rc__section" aria-labelledby="rc-flight-label">
+            <h2 class="rc__section-title" id="rc-flight-label">Detalles del Vuelo</h2>
+            <div class="rc__route" aria-label="Vuelo de JFK 10:30 AM hacia LAX 01:45 PM">
+              <div class="rc__route-point">
+                <div class="rc__route-icon rc__route-icon--depart" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M2.5 19h19v2h-19zm7.18-1.73l4.35 1.16 5.31 1.42c.8.21 1.62-.26 1.84-1.06.21-.8-.26-1.62-1.06-1.84l-3.62-.97-2.97-5.13-1.45-.39v4.11l-4.27-1.14-.92-2.53-1.45-.39v3.83l1.85.5 2.39.64z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="rc__route-code">JFK</p>
+                  <p class="rc__route-time">10:30 a.m.</p>
+                </div>
+              </div>
+              <div class="rc__route-line" aria-hidden="true">
+                <svg viewBox="0 0 80 16" width="60" height="14">
+                  <line x1="0" y1="8" x2="66" y2="8"
+                        stroke="rgba(77,120,255,0.35)" stroke-width="1.2"
+                        stroke-dasharray="4 3"/>
+                  <circle cx="71" cy="8" r="3.5" fill="rgba(77,120,255,0.6)"/>
+                </svg>
+              </div>
+              <div class="rc__route-point rc__route-point--right">
+                <div class="rc__route-icon rc__route-icon--arrive" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <path d="M2.5 19h19v2h-19zm16.84-3.18c.8.21 1.62-.26 1.84-1.06.21-.8-.26-1.62-1.06-1.84l-3.62-.97-2.97-5.13-1.45-.39v4.11l-4.27-1.14-.92-2.53-1.45-.39v3.83l1.85.5 11.05 2.97v.03z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="rc__route-code">LAX</p>
+                  <p class="rc__route-time">01:45 p.m.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="rc__divider" aria-hidden="true"></div>
+
+          <dl class="rc__fields">
+            <div class="rc__field">
+              <dt class="rc__field-label">Número de Vuelo</dt>
+              <dd class="rc__field-value rc__field-value--muted">AN123</dd>
+            </div>
+            <div class="rc__field">
+              <dt class="rc__field-label">Asiento</dt>
+              <dd class="rc__field-value rc__field-value--muted">24A</dd>
+            </div>
+            <div class="rc__field">
+              <dt class="rc__field-label">Tarifa</dt>
+              <dd class="rc__field-value">$780.00</dd>
+            </div>
+            <div class="rc__field">
+              <dt class="rc__field-label">Impuestos y Tasas</dt>
+              <dd class="rc__field-value">$79.50</dd>
+            </div>
+          </dl>
+
+          <div class="rc__total-row" role="group" aria-label="Total a pagar">
+            <span class="rc__total-label">Total</span>
+            <span class="rc__total-amount" aria-label="859 dólares con 50 centavos">$859.50</span>
+          </div>
+
+          <div class="rc__divider" aria-hidden="true"></div>
+
+          <dl class="rc__fields rc__fields--meta">
+            <div class="rc__field">
+              <dt class="rc__field-label rc__field-label--with-icon">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none"
+                     stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <rect x="1" y="4" width="22" height="16" rx="2"/>
+                  <line x1="1" y1="10" x2="23" y2="10"/>
+                </svg>
+                Método de Pago
+              </dt>
+              <dd class="rc__field-value rc__field-value--muted">Amex ••5678</dd>
+            </div>
+            <div class="rc__field">
+              <dt class="rc__field-label rc__field-label--with-icon">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none"
+                     stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                  <line x1="7" y1="7" x2="7.01" y2="7"/>
+                </svg>
+                Categoría
+              </dt>
+              <dd class="rc__field-value">
+                <span class="rc__category-chip">Viajes</span>
+              </dd>
+            </div>
+          </dl>
+
+        </article>
+      </div><!-- /rc__body -->
+
+      <footer class="rc__footer" aria-label="Acciones del recibo">
+        <button class="rc__action" type="button" aria-label="Compartir recibo">
+          <span class="rc__action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                 stroke="currentColor" stroke-width="1.8">
+              <circle cx="18" cy="5" r="3"/>
+              <circle cx="6" cy="12" r="3"/>
+              <circle cx="18" cy="19" r="3"/>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+            </svg>
+          </span>
+          <span class="rc__action-label">Compartir</span>
+        </button>
+        <div class="rc__footer-divider" aria-hidden="true"></div>
+        <button class="rc__action" type="button" aria-label="Descargar recibo">
+          <span class="rc__action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                 stroke="currentColor" stroke-width="1.8">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+          </span>
+          <span class="rc__action-label">Descargar</span>
+        </button>
+        <div class="rc__footer-divider" aria-hidden="true"></div>
+        <button class="rc__action" type="button" aria-label="Categorizar recibo">
+          <span class="rc__action-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                 stroke="currentColor" stroke-width="1.8">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </span>
+          <span class="rc__action-label">Categorizar</span>
+        </button>
+      </footer>
+
+    </section>
+
+</body>
+</html>

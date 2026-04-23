@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Viajar — UBERX</title>
+</head>
+<body>
+
+    <section id="travel" class="screen screen--travel">
+
+      <input type="checkbox" id="sheet-toggle" class="sheet-toggle__input" aria-hidden="true">
+      <input type="radio" name="ship" id="ship-crew"  class="ship-radio" value="crew"  checked aria-hidden="true">
+      <input type="radio" name="ship" id="ship-star"  class="ship-radio" value="star"  aria-hidden="true">
+      <input type="radio" name="ship" id="ship-dream" class="ship-radio" value="dream" aria-hidden="true">
+
+      <div class="travel__map" aria-hidden="true">
+        <div class="travel__stars"></div>
+        <svg class="travel__route-svg" viewBox="0 0 320 300" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path d="M 85 240 Q 180 60 235 100"
+                stroke="rgba(255,255,255,0.3)" stroke-width="1.5"
+                stroke-dasharray="6 9" stroke-linecap="round"/>
+          <circle cx="85" cy="240" r="3" fill="rgba(255,255,255,0.45)"/>
+        </svg>
+
+        <div class="travel__planet travel__planet--earth">
+          <!-- PLANETA — img intacta -->
+          <img
+            src="/assets/img/tierra.jpg"
+            alt="Tierra"
+            class="planet-css"
+            width="48"
+            height="48"
+          >
+          <span class="travel__planet-label">Tierra <span aria-hidden="true">›</span></span>
+        </div>
+
+        <div class="travel__planet travel__planet--mars">
+          <!-- PLANETA — img intacta -->
+          <img
+            src="/assets/img/marte.jpeg"
+            alt="Marte"
+            class="planet-css"
+            width="64"
+            height="64"
+          >
+          <span class="travel__planet-label">Marte <span aria-hidden="true">›</span></span>
+        </div>
+      </div>
+
+      <a href="#home" class="travel__back-btn" aria-label="Volver a Inicio">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </a>
+
+      <div class="travel__sheet">
+
+        <label for="sheet-toggle" class="sheet__handle-area" aria-label="Expandir opciones de nave">
+          <div class="sheet__handle" aria-hidden="true"></div>
+          <p class="sheet__alert">Las tarifas son más altas por los desechos espaciales</p>
+        </label>
+
+        <div class="sheet__collapsed">
+          <!-- Nave principal: div CSS-drawn -->
+          <div class="ship-illustration ship-illustration--crew" aria-hidden="true"></div>
+          <div class="ship-detail">
+            <div class="ship-detail__header">
+              <h2 class="ship-detail__name">Crew Dragon</h2>
+              <div class="ship-detail__price">
+                <span class="ship-detail__amount">48.5</span>
+                <div class="ship-detail__token" aria-hidden="true"></div>
+              </div>
+            </div>
+            <p class="ship-detail__meta">Próximo lanzamiento: 12/03/53, 19:30</p>
+            <p class="ship-detail__meta">Duración del viaje: 18 días, 13 horas</p>
+          </div>
+        </div>
+
+        <div class="sheet__expanded">
+          <ul class="ships-list" role="list" aria-label="Naves disponibles">
+
+            <li class="ship-item">
+              <label for="ship-crew" class="ship-item__label"
+                     aria-label="Seleccionar Crew Dragon, 48.5, lanzamiento 12/03/53">
+                <!-- Miniatura nave: div CSS-drawn -->
+                <div class="ship-mini ship-mini--crew" aria-hidden="true"></div>
+                <div class="ship-item__info">
+                  <h3 class="ship-item__name">Crew Dragon</h3>
+                  <p class="ship-item__date">Próximo lanzamiento: 12/03/53, 19:30</p>
+                </div>
+                <div class="ship-item__price" aria-hidden="true">
+                  <span>48.5</span>
+                  <div class="ship-item__token" aria-hidden="true"></div>
+                </div>
+              </label>
+            </li>
+
+            <li class="ship-item">
+              <label for="ship-star" class="ship-item__label"
+                     aria-label="Seleccionar Starliner, 51.2, lanzamiento 24/03/53">
+                <!-- Miniatura nave: div CSS-drawn -->
+                <div class="ship-mini ship-mini--starliner" aria-hidden="true"></div>
+                <div class="ship-item__info">
+                  <h3 class="ship-item__name">Starliner</h3>
+                  <p class="ship-item__date">Próximo lanzamiento: 24/03/53, 12:30</p>
+                </div>
+                <div class="ship-item__price" aria-hidden="true">
+                  <span>51.2</span>
+                  <div class="ship-item__token" aria-hidden="true"></div>
+                </div>
+              </label>
+            </li>
+
+            <li class="ship-item">
+              <label for="ship-dream" class="ship-item__label"
+                     aria-label="Seleccionar Dream Chaser, 102.5, lanzamiento 24/03/53">
+                <!-- Miniatura nave: div CSS-drawn -->
+                <div class="ship-mini ship-mini--dreamchaser" aria-hidden="true"></div>
+                <div class="ship-item__info">
+                  <h3 class="ship-item__name">Dream Chaser</h3>
+                  <p class="ship-item__date">Próximo lanzamiento: 24/03/53, 12:30</p>
+                </div>
+                <div class="ship-item__price" aria-hidden="true">
+                  <span>102.5</span>
+                  <div class="ship-item__token" aria-hidden="true"></div>
+                </div>
+              </label>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="sheet__actions">
+          <a href="#payments" class="sheet__wallet-btn" aria-label="Conectar wallet para pagar">
+            <div class="wallet-icon" aria-hidden="true"></div>
+            <span>Conectar Wallet</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </a>
+          <div class="swipe-confirm">
+            <label class="swipe-confirm__track" aria-label="Desliza para confirmar reserva">
+              <div class="swipe-confirm__arrow" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2.5" focusable="false">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </div>
+              <input type="range" min="0" max="100" value="0" step="1"
+                     class="swipe-confirm__range"
+                     aria-label="Progreso de confirmación">
+              <span class="swipe-confirm__text" aria-hidden="true">Desliza para confirmar tu reserva</span>
+              <span class="swipe-confirm__done" aria-live="polite">
+                <a href="#payments" class="swipe-confirm__done-link">Toca para continuar →</a>
+              </span>
+            </label>
+          </div>
+        </div>
+
+      </div><!-- /travel__sheet -->
+    </section>
+
+</body>
+</html>

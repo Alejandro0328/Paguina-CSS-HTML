@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Métodos de Pago — UBERX</title>
+</head>
+<body>
+
+    <section id="payments" class="screen screen--payments">
+
+      <header class="pm__header">
+        <a href="#travel" class="pm__back" aria-label="Volver a Viajes">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </a>
+        <h1 class="pm__title">Métodos de Pago</h1>
+        <div class="pm__header-spacer" aria-hidden="true"></div>
+      </header>
+
+      <div class="pm__body">
+
+        <div class="pm__search-wrap">
+          <svg class="pm__search-icon" width="15" height="15" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input type="search" class="pm__search-input"
+                 placeholder="Buscar métodos de pago"
+                 autocomplete="off" aria-label="Buscar métodos de pago (solo visual)"
+                 aria-readonly="true" readonly>
+        </div>
+
+        <ul class="pm__list" role="list" aria-label="Métodos de pago disponibles">
+
+          <li class="pm__item pm__item--has-1234">
+            <label for="pm-radio-1234" class="pm__item-row"
+                   role="button" aria-label="Visa terminada en 1234, predeterminada, vence 12/25">
+              <div class="pm__card-logo" aria-hidden="true">
+                <svg viewBox="0 0 38 24" width="28" height="18">
+                  <rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
+                  <circle cx="15" cy="12" r="7" fill="rgba(255,80,80,0.75)"/>
+                  <circle cx="23" cy="12" r="7" fill="rgba(255,160,0,0.65)"
+                          style="mix-blend-mode:screen"/>
+                </svg>
+              </div>
+              <div class="pm__item-info">
+                <div class="pm__item-number">**** **** **** 1234</div>
+                <div class="pm__item-expiry">Vence 12/25</div>
+              </div>
+              <div class="pm__item-actions">
+                <span class="pm__badge" aria-label="Tarjeta predeterminada">Predeterminada</span>
+                <span class="pm__kebab" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="5" r="1.5"/>
+                    <circle cx="12" cy="12" r="1.5"/>
+                    <circle cx="12" cy="19" r="1.5"/>
+                  </svg>
+                </span>
+              </div>
+            </label>
+          </li>
+
+          <li class="pm__item pm__item--has-5678">
+            <label for="pm-radio-5678" class="pm__item-row"
+                   role="button" aria-label="Tarjeta terminada en 5678, vence 01/26">
+              <div class="pm__card-logo" aria-hidden="true">
+                <svg viewBox="0 0 38 24" width="28" height="18">
+                  <rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
+                  <rect x="6" y="7" width="10" height="10" rx="2" fill="rgba(100,180,255,0.6)"/>
+                  <rect x="8" y="9" width="6" height="6" rx="1" fill="rgba(180,220,255,0.35)"/>
+                </svg>
+              </div>
+              <div class="pm__item-info">
+                <div class="pm__item-number">**** **** **** 5678</div>
+                <div class="pm__item-expiry">Vence 01/26</div>
+              </div>
+              <div class="pm__item-actions">
+                <button class="pm__action-btn pm__action-btn--edit" type="button"
+                        aria-label="Editar tarjeta terminada en 5678" tabindex="-1">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                  </svg>
+                </button>
+                <button class="pm__action-btn pm__action-btn--delete" type="button"
+                        aria-label="Eliminar tarjeta terminada en 5678" tabindex="-1">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <polyline points="3 6 5 6 21 6"/>
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                    <path d="M10 11v6M14 11v6"/>
+                    <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+                  </svg>
+                </button>
+              </div>
+            </label>
+          </li>
+
+          <li class="pm__item pm__item--has-pp">
+            <label for="pm-radio-pp" class="pm__item-row"
+                   role="button" aria-label="Cuenta PayPal, user@spacex.com">
+              <div class="pm__card-logo" aria-hidden="true">
+                <svg viewBox="0 0 38 24" width="28" height="18">
+                  <rect width="38" height="24" rx="4" fill="rgba(255,255,255,0.06)"/>
+                  <text x="5" y="17" font-size="11" font-weight="800"
+                        font-family="sans-serif" fill="#009cde">Pay</text>
+                  <text x="20" y="17" font-size="11" font-weight="800"
+                        font-family="sans-serif" fill="#003087">Pal</text>
+                </svg>
+              </div>
+              <div class="pm__item-info">
+                <div class="pm__item-number">PayPal</div>
+                <div class="pm__item-expiry">user@spacex.com</div>
+              </div>
+              <div class="pm__item-actions">
+                <button class="pm__action-btn pm__action-btn--edit" type="button"
+                        aria-label="Editar cuenta PayPal" tabindex="-1">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                  </svg>
+                </button>
+                <button class="pm__action-btn pm__action-btn--delete" type="button"
+                        aria-label="Eliminar cuenta PayPal" tabindex="-1">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <polyline points="3 6 5 6 21 6"/>
+                    <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                    <path d="M10 11v6M14 11v6"/>
+                    <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+                  </svg>
+                </button>
+              </div>
+            </label>
+          </li>
+
+        </ul>
+      </div><!-- /pm__body -->
+
+      <div class="pm__footer">
+        <a href="#receipt" class="pm__confirm-cta" aria-label="Confirmar y pagar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          Confirmar y Pagar
+        </a>
+        <button class="pm__cta" type="button" aria-label="Añadir nuevo método de pago">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+          Añadir Método de Pago
+        </button>
+      </div>
+
+    </section>
+
+</body>
+</html>
