@@ -187,7 +187,7 @@ Versión de concepto / UI prototype
 
 ## 👤 Autor
 
-**Tu Nombre**
+**Miguel Alejandro**
 - GitHub: [@Alejandro0328](https://github.com/Alejandro0328)
 
 
